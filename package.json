@@ -3,8 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.10.17",
+    "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-fa": "^5.0.0",
+    "react-lazyload": "^2.5.0",
+    "react-masonry-infinite": "^1.2.2",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
@@ -21,5 +27,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "autoresponsive-react": "^1.1.31",
+    "eslint": "^5.12.0",
+    "eslint-config-google": "^0.12.0",
+    "eslint-plugin-react": "^7.12.4"
+  }
 }

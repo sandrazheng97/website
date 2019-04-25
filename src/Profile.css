@@ -1,0 +1,16 @@
+.profile {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: red;
+}
+
+.card img {
+  width: 100%;
+}

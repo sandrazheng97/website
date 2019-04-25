@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+}
+
+.side {
+  flex: 1;
+}
+
+.cancel-button {
+  color: black;
+  font-size: 30px;
+}
+
+.cancel-button:hover {
+  color: var(--peach);
+}
+
+.carousel {
+  margin: 0 auto;
+  width: 830px;
+}
+
+.carousel-item {
+  width: 720px;
+  height: 400px;
+  overflow: hidden;
+  background: red;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.carousel-item img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.arrow {
+  padding: 40px;
+  font-size: 40px;
+  width: 15px;
+}
+
+.thumbnails {
+  margin: 20px auto 0 auto;
+  width: 750px;
+}
