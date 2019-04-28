@@ -18,10 +18,10 @@ class Header extends Component {
               ABOUT
             </a>
           </div>
-          <div className="header-item title-container">
+          {/*<div className="header-item title-container">
             <div className="title">SANDRA ZHENG</div>
             <div className="subtitle">ILLUSTRATION - DESIGN</div>
-          </div>
+          </div>*/}
           <div className="header-item social">
             <i className="social-item fab fa-instagram" />
             <i className="social-item fab fa-behance" />

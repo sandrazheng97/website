@@ -1,5 +1,3 @@
-const w2 = 390;
-const h2 = 390;
 const elements = [
   {
     src: "images/a.jpg"
@@ -8,12 +6,12 @@ const elements = [
     src: "images/c.jpg"
   },
   {
-    height: h2,
+    height: 4,
     src: "images/d.jpg"
   },
   {
-    width: w2,
-    height: h2,
+    width: 4,
+    height: 4,
     src: "images/b.jpg"
   },
   {
@@ -29,12 +27,12 @@ const elements = [
     src: "images/c.jpg"
   },
   {
-    height: h2,
+    height: 4,
     src: "images/d.jpg"
   },
   {
-    width: w2,
-    height: h2,
+    width: 4,
+    height: 4,
     src: "images/b.jpg"
   },
   {
@@ -47,16 +45,16 @@ const elements = [
     src: "images/a.jpg"
   },
   {
-    src: "images/c.jpg"
-  },
-  {
-    height: h2,
+    height: 4,
     src: "images/d.jpg"
   },
   {
-    width: w2,
-    height: h2,
+    width: 4,
+    height: 4,
     src: "images/b.jpg"
+  },
+  {
+    src: "images/c.jpg"
   },
   {
     src: "images/e.jpg"

@@ -12,7 +12,7 @@ class App extends Component {
       <HashRouter>
         <div>
           <Header />
-          <Route exact path="/" component={Profile} />
+          <Route path="/" component={Profile} />
           <Route path="/carousel/:index?" component={Carousel} />
         </div>
       </HashRouter>

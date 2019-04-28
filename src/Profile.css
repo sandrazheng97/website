@@ -1,6 +1,16 @@
 .profile {
-  width: 600px;
+  max-width: 800px;
+  padding: 0 5px;
   margin: 0 auto;
+}
+
+.gallery {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(6, 1fr);
+
+  /* To by dynamically set*/
+  grid-auto-rows: 90px;
 }
 
 .card {
@@ -8,9 +18,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
+
+  grid-column-end: span 2;
+  grid-row-end: span 2;
 }
 
 .card img {
+  display: flex;
+  height: 100%;
   width: 100%;
+  object-fit: cover;
 }
+
