@@ -14,6 +14,8 @@ function mod(n, m) {
   return ((n % m) + m) % m;
 }
 
+const kMaxCarouselImageSize = 830;
+
 class Carousel extends Component {
   constructor(props) {
     super(props);
@@ -24,8 +26,7 @@ class Carousel extends Component {
       value: selected,
       thumbnail: selected,
       elements,
-      thumbnails: elements,
-      showThumbnails: window.innerWidth >= 830
+      thumbnails: elements
     };
     this.onChangeCarousel = this.onChangeCarousel.bind(this);
     this.onChangeThumbnails = this.onChangeThumbnails.bind(this);
@@ -36,12 +37,20 @@ class Carousel extends Component {
     window.addEventListener(
       "resize",
       () => {
+        const showThumbnails = window.innerWidth >= kMaxCarouselImageSize;
         this.setState({
-          showThumbnails: window.innerWidth >= 830
+          showThumbnails,
+          carouselImageWidth: Math.min(kMaxCarouselImageSize, window.innerWidth)
         });
       },
       false
     );
+
+    const showThumbnails = window.innerWidth >= kMaxCarouselImageSize;
+    this.setState({
+      showThumbnails,
+      carouselImageWidth: Math.min(kMaxCarouselImageSize, window.innerWidth)
+    });
   }
 
   onChangeCarousel(value) {
@@ -52,7 +61,11 @@ class Carousel extends Component {
   }
 
   onChangeThumbnails(thumbnail) {
-    this.setState({ thumbnail });
+    if (this.state.showThumbnails) {
+      this.setState({ thumbnail });
+    } else {
+      this.setState({ value: thumbnail });
+    }
   }
 
   onClickThumbnail(value) {
@@ -63,43 +76,62 @@ class Carousel extends Component {
   }
 
   render() {
-    const { showThumbnails } = this.state;
+    const { showThumbnails, carouselImageWidth } = this.state;
     return (
       <div className="container">
-          <div className="side" />
-          <div className="carousel-container">
-            <ReactCarousel
-              infinite
-              centered
-              arrowLeft={!showThumbnails && <Icon className="arrow" name="angle-left" />}
-              arrowRight={!showThumbnails && <Icon className="arrow" name="angle-right" />}
-              addArrowClickHandler
-              className="carousel"
-              value={this.state.value}
-              onChange={this.onChangeCarousel}
-              slides={this.state.elements.map(({ src }, i) => (
-                <div key={i} className="carousel-item">
-                  <div className="carousel-item-primary">Primary Text</div>
-                  <div className="carousel-item-secondary">Secondary Text</div>
+        <div className="carousel-container">
+          <ReactCarousel
+            infinite
+            centered
+            className="carousel"
+            value={this.state.value}
+            onChange={this.onChangeCarousel}
+            itemWidth={carouselImageWidth}
+            slides={this.state.elements.map(
+              ({ primary, secondary, src }, i) => (
+                <div
+                  key={i}
+                  className="carousel-item"
+                  style={{ width: carouselImageWidth }}
+                >
+                  <div className="carousel-header">
+                    <div className="side" />
+                    <div className="carousel-description">
+                      <div className="carousel-item-primary">
+                        {primary || "Primary text"}
+                      </div>
+                      <div className="carousel-item-secondary">
+                        {secondary || "Secondary text"}
+                      </div>
+                    </div>
+                    <div className="side">
+                      <Link to="/">
+                        <Icon name="times" className="cancel-button" />
+                      </Link>
+                    </div>
+                  </div>
                   <div className="carousel-item-image">
                     <img alt={src} src={src} />
                   </div>
                 </div>
-              ))}
-            />
-            <ReactCarousel
-              infinite
-              centered
-              arrowLeft={<Icon className="arrow" name="angle-left" />}
-              arrowRight={<Icon className="arrow" name="angle-right" />}
-              addArrowClickHandler
-              className="thumbnails"
-              value={this.state.thumbnail}
-              onChange={this.onChangeThumbnails}
-              slidesPerPage={0}
-              slidesPerScroll={3}
-              itemWidth={200}
-              slides={this.state.elements.map(({ src }, i) => (
+              )
+            )}
+          />
+          <ReactCarousel
+            infinite
+            centered
+            arrowLeft={<Icon className="arrow" name="angle-left" />}
+            arrowRight={<Icon className="arrow" name="angle-right" />}
+            addArrowClickHandler
+            className="thumbnails"
+            value={showThumbnails ? this.state.thumbnail : this.state.value}
+            onChange={this.onChangeThumbnails}
+            slidesPerPage={0}
+            slidesPerScroll={showThumbnails ? 3 : 1}
+            itemWidth={200}
+            slides={
+              showThumbnails &&
+              this.state.elements.map(({ src }, i) => (
                 <Thumbnail
                   value={i}
                   src={src}
@@ -108,14 +140,10 @@ class Carousel extends Component {
                     mod(this.state.value, this.state.thumbnails.length) === i
                   }
                 />
-              ))}
-            />
-          </div>
-          <div className="side">
-            <Link to="/">
-              <Icon name="times" className="cancel-button" />
-            </Link>
-          </div>
+              ))
+            }
+          />
+        </div>
       </div>
     );
   }

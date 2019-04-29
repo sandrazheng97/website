@@ -1,5 +1,7 @@
 const elements = [
   {
+    primary: "Image a",
+    secondary: "Second",
     src: "images/a.jpg"
   },
   {
