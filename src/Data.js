@@ -1,14 +1,19 @@
 const elements = [
   {
-    primary: "Image a",
-    secondary: "Second",
-    src: "images/a.jpg"
+    primary: "Vancouver",
+    secondary: "blah",
+    src: "images/finalmap.jpg"
+  },
+  {
+    primary: "blah",
+    secondary: "blah",
+    src: "images/fishcake.jpg"
   },
   {
     src: "images/c.jpg"
   },
   {
-    height: 4,
+    height: 6,
     src: "images/d.jpg"
   },
   {

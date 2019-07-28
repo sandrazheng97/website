@@ -1,0 +1,9 @@
+1. Open Terminal
+2. cd ~/website
+3. npm start
+
+
+To upload change
+1. Open Terminal
+2. cd ~/website
+3. npm run deploy
