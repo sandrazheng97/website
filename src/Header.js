@@ -6,10 +6,30 @@ import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      headerColor: "white"
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll.bind(this));
+  }
+
+  handleScroll(event) {
+    this.setState({ headerColor: window.scrollY > 20 ? "#ffe967" : "white" });
+  }
+
   render() {
+    const { headerColor } = this.state;
     return (
       <div className="header-container">
-        <div className="header">
+        <div className="header" style={{ backgroundColor: headerColor }}>
           <div className="header-item navigation">
             <NavLink className="link" to="/illustration">
               ILLUSTRATION
@@ -23,7 +43,7 @@ class Header extends Component {
               <img
                 className="header-title"
                 alt={"name"}
-                src="/images/name.jpg"
+                src="/images/name.png"
               />
             </LazyLoad>
           </div>

@@ -21,7 +21,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     const source = props.match.params.source;
-    var elements = source === "design" ? DesignElements : IllustrationElements;
+    var elements = source === "/design" ? DesignElements : IllustrationElements;
     console.log(source);
 
     const selected = props.match.params.index || 0;
@@ -86,7 +86,8 @@ class Carousel extends Component {
   }
 
   render() {
-    const { showThumbnails, carouselImageWidth } = this.state;
+    const { showThumbnails, carouselImageWidth, source } = this.state;
+    console.log(source);
     return (
       <div className="container">
         <div className="carousel-container">
@@ -115,7 +116,7 @@ class Carousel extends Component {
                       </div>
                     </div>
                     <div className="side">
-                      <Link to="/">
+                      <Link to={"/" + this.state.source}>
                         <Icon name="times" className="cancel-button" />
                       </Link>
                     </div>

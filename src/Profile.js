@@ -13,10 +13,11 @@ const kMaxGridWidth = 800;
 class Profile extends Component {
   constructor(props) {
     super(props);
-    const source = props.match.path || "/illustration";
+    const source =
+      props.match.path !== "/" ? props.match.path : "/illustration";
     var elements =
       source === "/illustration" ? IllustrationElements : DesignElements;
-    console.log(this.props.match);
+    console.log(source, props.match.path, props.match.path === "/");
 
     this.state = {
       source,
