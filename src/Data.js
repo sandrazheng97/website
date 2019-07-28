@@ -14,7 +14,10 @@ const elements = [
   {
     width: 4,
     height: 4,
-    src: "images/b.jpg"
+    src: "images/b.jpg",
+    imageStyles: {
+      transform: "scale(1.5)"
+    }
   },
   {
     src: "images/e.jpg"

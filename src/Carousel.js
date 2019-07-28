@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import Thumbnail from "./Thumbnail";
 
 import "./Carousel.css";
-import Elements from "./Data";
+import DesignElements from "./Data";
+import IllustrationElements from "./TestData.js";
 
 function mod(n, m) {
   return ((n % m) + m) % m;
@@ -19,10 +20,13 @@ const kMaxCarouselImageSize = 830;
 class Carousel extends Component {
   constructor(props) {
     super(props);
-    var elements = Elements;
+    const source = props.match.params.source;
+    var elements = source === "design" ? DesignElements : IllustrationElements;
+    console.log(source);
 
     const selected = props.match.params.index || 0;
     this.state = {
+      source,
       value: selected,
       thumbnail: selected,
       elements,
@@ -55,7 +59,10 @@ class Carousel extends Component {
 
   onChangeCarousel(value) {
     this.props.history.push(
-      "/carousel/" + parseInt(mod(value, this.state.thumbnails.length))
+      "/carousel/" +
+        this.state.source +
+        "/" +
+        parseInt(mod(value, this.state.thumbnails.length))
     );
     this.setState({ value, thumbnail: value });
   }
@@ -70,7 +77,10 @@ class Carousel extends Component {
 
   onClickThumbnail(value) {
     this.props.history.push(
-      "/carousel/" + parseInt(mod(value, this.state.thumbnails.length))
+      "/carousel/" +
+        this.state.source +
+        "/" +
+        parseInt(mod(value, this.state.thumbnails.length))
     );
     this.setState({ value, thumbnail: value });
   }
@@ -111,7 +121,7 @@ class Carousel extends Component {
                     </div>
                   </div>
                   <div className="carousel-item-image">
-                    <img alt={src} src={src} />
+                    <img alt={src} src={"/" + src} />
                   </div>
                 </div>
               )
@@ -134,7 +144,7 @@ class Carousel extends Component {
               this.state.elements.map(({ src }, i) => (
                 <Thumbnail
                   value={i}
-                  src={src}
+                  src={"/" + src}
                   onClick={this.onClickThumbnail}
                   selected={
                     mod(this.state.value, this.state.thumbnails.length) === i
