@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Icon from "react-fa";
 
 import "./Header.css";
 
@@ -23,6 +24,7 @@ class Header extends Component {
             <div className="subtitle">ILLUSTRATION - DESIGN</div>
           </div>*/}
           <div className="header-item social">
+            <Icon className="arrow" name="fa-instagram" />
             <i className="social-item fab fa-instagram" />
             <i className="social-item fab fa-behance" />
             <i className="social-item far fa-envelope" />

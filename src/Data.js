@@ -10,11 +10,6 @@ const elements = [
     src: "images/fishcake.jpg"
   },
   {
-    primary: "blah",
-    secondary: "blah",
-    src: "images/a.jpg"
-  },
-  {
     src: "images/c.jpg"
   },
   {

@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AutoResponsive from "autoresponsive-react";
 import LazyLoad from "react-lazyload";
 
 import "./Profile.css";
 import Elements from "./Data";
+
+const kNumColumns = 6;
+const kColumnSpacing = 10;
+const kMaxGridWidth = 800;
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       elements: Elements,
-      gridHeight: 90
+      gridHeight: this.getGridHeight()
     };
+  }
+
+  getGridHeight() {
+    return Math.floor((Math.min(window.innerWidth, kMaxGridWidth) - kColumnSpacing * 2) / kNumColumns);
   }
 
   componentDidMount() {
@@ -20,7 +27,7 @@ class Profile extends Component {
       "resize",
       () => {
         this.setState({
-          gridHeight: Math.floor((Math.min(window.innerWidth, 800) - 20) / 6)
+          gridHeight: this.getGridHeight()
         });
       },
       false
