@@ -21,9 +21,7 @@ const elements = [{
     secondary: "Watercolor",
     src: "images/radio_snake.jpg",
     width: 3,
-    // imageStyles: {
-    //   transform: "scale(1.5)"
-    // }
+
     height: 4,
 }, {
     primary: "Extinct Nature",
@@ -58,7 +56,12 @@ const elements = [{
     secondary: "Pen, Watercolor, & Digital",
     width: 3,
     height: 6,
-    src: "images/creature_comforts.jpg"
+    src: "images/creature_comforts.jpg",
+    imageStyles: {
+        transform: "scale(1.2)",
+        transformOrigin: "0% 90%"
+
+    }
 }, {
     primary: "Living Through Two Shootings",
     secondary: "Digital",

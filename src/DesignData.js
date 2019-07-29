@@ -59,3 +59,5 @@ const elements = [{
     width: 4,
     height: 3,
 }, ]
+
+export default elements;
