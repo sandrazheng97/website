@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, HashRouter } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import "./App.css";
 import Header from "./Header";
@@ -9,13 +9,15 @@ import Carousel from "./Carousel";
 class App extends Component {
   render() {
     return (
-      <HashRouter>
+      <Router>
         <div>
           <Header />
-          <Route path="/" component={Profile} />
-          <Route path="/carousel/:index?" component={Carousel} />
+          <Route exact path="/" component={Profile} />
+          <Route path="/illustration" component={Profile} />
+          <Route path="/design" component={Profile} />
+          <Route exact path="/carousel/:source/:index?" component={Carousel} />
         </div>
-      </HashRouter>
+      </Router>
     );
   }
 }

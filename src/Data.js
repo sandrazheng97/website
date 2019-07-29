@@ -21,6 +21,9 @@ const elements = [{
     secondary: "Watercolor",
     src: "images/radio_snake.jpg",
     width: 3,
+    // imageStyles: {
+    //   transform: "scale(1.5)"
+    // }
     height: 4,
 }, {
     primary: "Extinct Nature",

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 
 import "./Profile.css";
-import Elements from "./Data";
+import DesignElements from "./Data";
+import IllustrationElements from "./TestData.js";
 
 const kNumColumns = 6;
 const kColumnSpacing = 10;
@@ -12,14 +13,24 @@ const kMaxGridWidth = 800;
 class Profile extends Component {
   constructor(props) {
     super(props);
+    const source =
+      props.match.path !== "/" ? props.match.path : "/illustration";
+    var elements =
+      source === "/illustration" ? IllustrationElements : DesignElements;
+    console.log(source, props.match.path, props.match.path === "/");
+
     this.state = {
-      elements: Elements,
+      source,
+      elements,
       gridHeight: this.getGridHeight()
     };
   }
 
   getGridHeight() {
-    return Math.floor((Math.min(window.innerWidth, kMaxGridWidth) - kColumnSpacing * 2) / kNumColumns);
+    return Math.floor(
+      (Math.min(window.innerWidth, kMaxGridWidth) - kColumnSpacing * 2) /
+        kNumColumns
+    );
   }
 
   componentDidMount() {
@@ -37,9 +48,12 @@ class Profile extends Component {
   render() {
     return (
       <div className="profile">
-        <div className="gallery" style={{gridAutoRows: this.state.gridHeight}}>
-          {this.state.elements.map(({ height, src, width }, i) => {
-            var style = {}
+        <div
+          className="gallery"
+          style={{ gridAutoRows: this.state.gridHeight }}
+        >
+          {this.state.elements.map(({ height, src, width, imageStyles }, i) => {
+            var style = {};
             if (height) {
               style.gridRowEnd = "span " + parseInt(height);
             }
@@ -48,9 +62,9 @@ class Profile extends Component {
             }
             return (
               <div key={i} className="card" style={style}>
-                <Link to={"/carousel/" + parseInt(i)}>
+                <Link to={"/carousel" + this.state.source + "/" + parseInt(i)}>
                   <LazyLoad>
-                    <img alt={src} src={src} />
+                    <img alt={src} src={src} style={imageStyles} />
                   </LazyLoad>
                 </Link>
               </div>
