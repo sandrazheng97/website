@@ -36,5 +36,8 @@
     "eslint-config-google": "^0.12.0",
     "eslint-plugin-react": "^7.12.4"
   },
-  "homepage": "https://sandrazheng97.github.io/website"
+  "homepage": "https://sandrazheng97.github.io",
+  "gh-pages-deploy": {
+    "cname": "sandrazheng97.com"
+  }
 }
