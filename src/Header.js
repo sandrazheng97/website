@@ -37,6 +37,12 @@ class Header extends Component {
             <NavLink className="link" to="/design">
               DESIGN
             </NavLink>
+            <NavLink className="link" to="">
+              SHOP
+            </NavLink>
+            <NavLink className="link" to="/about">
+              ABOUT
+            </NavLink>
           </div>
           <div className="header-item title-container">
             <LazyLoad>
@@ -48,11 +54,10 @@ class Header extends Component {
             </LazyLoad>
           </div>
           <div className="header-item social">
-            <Icon className="arrow" name="fa-instagram" />
             <i className="social-item fab fa-instagram" />
+            <i className="social-item fab fa-linkedin-in" />
             <i className="social-item fab fa-behance" />
             <i className="social-item far fa-envelope" />
-            <i className="social-item fab fa-linkedin-in" />
           </div>
         </div>
         <div className="placeholder" />

@@ -8,7 +8,7 @@ import IllustrationElements from "./IllustrationData.js";
 
 const kNumColumns = 6;
 const kColumnSpacing = 10;
-const kMaxGridWidth = 800;
+const kMaxGridWidth = 1000;
 
 class Profile extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class Profile extends Component {
     getGridHeight() {
         return Math.floor(
             (Math.min(window.innerWidth, kMaxGridWidth) - kColumnSpacing * 2) /
-            kNumColumns
+                kNumColumns
         );
     }
 
@@ -47,31 +47,47 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="profile">
-        <div
-          className="gallery"
-          style={{ gridAutoRows: this.state.gridHeight }}
-        >
-          {this.state.elements.map(({ height, src, width, imageStyles }, i) => {
-            var style = {};
-            if (height) {
-              style.gridRowEnd = "span " + parseInt(height);
-            }
-            if (width) {
-              style.gridColumnEnd = "span " + parseInt(width);
-            }
-            return (
-              <div key={i} className="card" style={style}>
-                <Link to={"/carousel" + this.state.source + "/" + parseInt(i)}>
-                  <LazyLoad>
-                    <img alt={src} src={src} style={imageStyles} />
-                  </LazyLoad>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+            <div className="profile" style={{ maxWidth: kMaxGridWidth }}>
+                <div
+                    className="gallery"
+                    style={{
+                        gridAutoRows: this.state.gridHeight,
+                        gridGap: kColumnSpacing
+                    }}
+                >
+                    {this.state.elements.map(
+                        ({ height, src, width, imageStyles }, i) => {
+                            var style = {};
+                            if (height) {
+                                style.gridRowEnd = "span " + parseInt(height);
+                            }
+                            if (width) {
+                                style.gridColumnEnd = "span " + parseInt(width);
+                            }
+                            return (
+                                <div key={i} className="card" style={style}>
+                                    <Link
+                                        to={
+                                            "/carousel" +
+                                            this.state.source +
+                                            "/" +
+                                            parseInt(i)
+                                        }
+                                    >
+                                        <LazyLoad>
+                                            <img
+                                                alt={src}
+                                                src={src}
+                                                style={imageStyles}
+                                            />
+                                        </LazyLoad>
+                                    </Link>
+                                </div>
+                            );
+                        }
+                    )}
+                </div>
+            </div>
         );
     }
 }

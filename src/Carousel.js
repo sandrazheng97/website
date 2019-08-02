@@ -12,84 +12,84 @@ import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
 function mod(n, m) {
-    return ((n % m) + m) % m;
+  return ((n % m) + m) % m;
 }
 
 const kMaxCarouselImageSize = 830;
 
 class Carousel extends Component {
-    constructor(props) {
-        super(props);
-        const source = props.match.params.source;
-        var elements = source === "/design" ? DesignElements : IllustrationElements;
-        console.log(source);
+  constructor(props) {
+    super(props);
+    const source = props.match.params.source;
+    var elements = source === "/design" ? DesignElements : IllustrationElements;
+    console.log(source);
 
-        const selected = props.match.params.index || 0;
-        this.state = {
-            source,
-            value: selected,
-            thumbnail: selected,
-            elements,
-            thumbnails: elements
-        };
-        this.onChangeCarousel = this.onChangeCarousel.bind(this);
-        this.onChangeThumbnails = this.onChangeThumbnails.bind(this);
-        this.onClickThumbnail = this.onClickThumbnail.bind(this);
-    }
+    const selected = props.match.params.index || 0;
+    this.state = {
+      source,
+      value: selected,
+      thumbnail: selected,
+      elements,
+      thumbnails: elements
+    };
+    this.onChangeCarousel = this.onChangeCarousel.bind(this);
+    this.onChangeThumbnails = this.onChangeThumbnails.bind(this);
+    this.onClickThumbnail = this.onClickThumbnail.bind(this);
+  }
 
-    componentDidMount() {
-        window.addEventListener(
-            "resize",
-            () => {
-                const showThumbnails = window.innerWidth >= kMaxCarouselImageSize;
-                this.setState({
-                    showThumbnails,
-                    carouselImageWidth: Math.min(kMaxCarouselImageSize, window.innerWidth)
-                });
-            },
-            false
-        );
-
+  componentDidMount() {
+    window.addEventListener(
+      "resize",
+      () => {
         const showThumbnails = window.innerWidth >= kMaxCarouselImageSize;
         this.setState({
-            showThumbnails,
-            carouselImageWidth: Math.min(kMaxCarouselImageSize, window.innerWidth)
+          showThumbnails,
+          carouselImageWidth: Math.min(kMaxCarouselImageSize, window.innerWidth)
         });
-    }
+      },
+      false
+    );
 
-    onChangeCarousel(value) {
-        this.props.history.push(
-            "/carousel/" +
-            this.state.source +
-            "/" +
-            parseInt(mod(value, this.state.thumbnails.length))
-        );
-        this.setState({ value, thumbnail: value });
-    }
+    const showThumbnails = window.innerWidth >= kMaxCarouselImageSize;
+    this.setState({
+      showThumbnails,
+      carouselImageWidth: Math.min(kMaxCarouselImageSize, window.innerWidth)
+    });
+  }
 
-    onChangeThumbnails(thumbnail) {
-        if (this.state.showThumbnails) {
-            this.setState({ thumbnail });
-        } else {
-            this.setState({ value: thumbnail });
-        }
-    }
+  onChangeCarousel(value) {
+    this.props.history.push(
+      "/carousel/" +
+        this.state.source +
+        "/" +
+        parseInt(mod(value, this.state.thumbnails.length))
+    );
+    this.setState({ value, thumbnail: value });
+  }
 
-    onClickThumbnail(value) {
-        this.props.history.push(
-            "/carousel/" +
-            this.state.source +
-            "/" +
-            parseInt(mod(value, this.state.thumbnails.length))
-        );
-        this.setState({ value, thumbnail: value });
+  onChangeThumbnails(thumbnail) {
+    if (this.state.showThumbnails) {
+      this.setState({ thumbnail });
+    } else {
+      this.setState({ value: thumbnail });
     }
+  }
 
-    render() {
-        const { showThumbnails, carouselImageWidth, source } = this.state;
-        console.log(source);
-        return (
-            <div className="container">
+  onClickThumbnail(value) {
+    this.props.history.push(
+      "/carousel/" +
+        this.state.source +
+        "/" +
+        parseInt(mod(value, this.state.thumbnails.length))
+    );
+    this.setState({ value, thumbnail: value });
+  }
+
+  render() {
+    const { showThumbnails, carouselImageWidth, source } = this.state;
+    console.log(source);
+    return (
+      <div className="container">
         <div className="carousel-container">
           <ReactCarousel
             infinite
@@ -154,10 +154,10 @@ class Carousel extends Component {
               ))
             }
           />
-        </div> <
-            /div>
-        );
-    }
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Carousel;

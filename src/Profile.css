@@ -1,12 +1,9 @@
 .profile {
-  max-width: 800px;
-  padding: 0 5px;
   margin: 0 auto;
 }
 
 .gallery {
   display: grid;
-  grid-gap: 5px;
   grid-template-columns: repeat(6, 1fr);
 
   /* To by dynamically set*/
