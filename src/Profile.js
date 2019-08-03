@@ -17,7 +17,6 @@ class Profile extends Component {
             props.match.path !== "/" ? props.match.path : "/illustration";
         var elements =
             source === "/illustration" ? IllustrationElements : DesignElements;
-        console.log(source, props.match.path, props.match.path === "/");
 
         this.state = {
             source,
