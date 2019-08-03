@@ -15,8 +15,10 @@ class AboutPage extends Component {
             </LazyLoad>
           </div>
         </div>
+        <div className="about-divider" />
         <div className="info">
           <div className="info-title">INFO</div>
+
           <div className="info-body">
             Sandra Zheng is a Canadian born illustrator and designer who
             graduated from ArtCenter College of Design. She is based in

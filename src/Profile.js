@@ -8,7 +8,6 @@ import IllustrationElements from "./IllustrationData.js";
 
 const kNumColumns = 6;
 const kColumnSpacing = 10;
-const kMaxGridWidth = 1000;
 
 class Profile extends Component {
     constructor(props) {
@@ -20,33 +19,42 @@ class Profile extends Component {
 
         this.state = {
             source,
-            elements,
-            gridHeight: this.getGridHeight()
+            elements
+            //
         };
+        this.onScroll = this.onScroll.bind(this);
+        this.profileElement = React.createRef();
     }
 
     getGridHeight() {
         return Math.floor(
-            (Math.min(window.innerWidth, kMaxGridWidth) - kColumnSpacing * 2) /
+            (this.profileElement.current.offsetWidth - kColumnSpacing * 2) /
                 kNumColumns
         );
     }
 
+    onScroll() {
+        this.setState({
+            gridHeight: this.getGridHeight()
+        });
+    }
+
     componentDidMount() {
-        window.addEventListener(
-            "resize",
-            () => {
-                this.setState({
-                    gridHeight: this.getGridHeight()
-                });
-            },
-            false
-        );
+        window.addEventListener("resize", this.onScroll, false);
+        this.setState({ gridHeight: this.getGridHeight() });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.onScroll, false);
     }
 
     render() {
         return (
-            <div className="profile" style={{ maxWidth: kMaxGridWidth }}>
+            <div
+                ref={this.profileElement}
+                className="profile"
+                style={{ width: "100%" }}
+            >
                 <div
                     className="gallery"
                     style={{

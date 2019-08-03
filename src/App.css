@@ -7,11 +7,13 @@ a:visited {
   color: black;
 }
 
+
 .app-body {
-  padding: 0 200px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .copyright {
-  margin-top: 20px;
+  margin: 20px 0;
   font-style: italic;
 }
