@@ -21,7 +21,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     const source = props.match.params.source;
-    var elements = source === "/design" ? DesignElements : IllustrationElements;
+    var elements = source === "design" ? DesignElements : IllustrationElements;
     console.log(source);
 
     const selected = props.match.params.index || 0;

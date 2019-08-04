@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, HashRouter as Router } from "react-router-dom";
 
-import "./App.css";
+import styles from "./App.module.css";
 import Header from "./Header";
 import Profile from "./Profile";
 import Carousel from "./Carousel";
@@ -12,9 +12,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="app">
+        <div className={styles.app}>
           <Header />
-          <div className="app-body" ref={this.profileElement}>
+          <div className={styles.appBody} ref={this.profileElement}>
             <Route exact path="/" component={Profile} />
             <Route path="/illustration" component={Profile} />
             <Route path="/design" component={Profile} />
@@ -25,7 +25,9 @@ class App extends Component {
               path="/carousel/:source/:index?"
               component={Carousel}
             />
-            <div className="copyright">Copyright © 2019 Sandra Zheng</div>
+            <div className={styles.copyright}>
+              Copyright © 2019 Sandra Zheng
+            </div>
           </div>
         </div>
       </Router>
