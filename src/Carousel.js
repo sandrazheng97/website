@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import Thumbnail from "./Thumbnail";
 
-import "./Carousel.css";
+import styles from "./Carousel.module.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
@@ -89,12 +89,12 @@ class Carousel extends Component {
     const { showThumbnails, carouselImageWidth, source } = this.state;
     console.log(source);
     return (
-      <div className="container">
-        <div className="carousel-container">
+      <div className={styles.container}>
+        <div className={styles.carouselContainer}>
           <ReactCarousel
             infinite
             centered
-            className="carousel"
+            className={styles.carousel}
             value={this.state.value}
             onChange={this.onChangeCarousel}
             itemWidth={carouselImageWidth}
@@ -102,26 +102,26 @@ class Carousel extends Component {
               ({ primary, secondary, src }, i) => (
                 <div
                   key={i}
-                  className="carousel-item"
+                  className={styles.carouselItem}
                   style={{ width: carouselImageWidth }}
                 >
-                  <div className="carousel-header">
-                    <div className="side" />
-                    <div className="carousel-description">
-                      <div className="carousel-item-primary">
+                  <div className={styles.carouselHeader}>
+                    <div className={styles.side} />
+                    <div className={styles.carouselDescription}>
+                      <div className={styles.carouselItemPrimary}>
                         {primary || "Primary text"}
                       </div>
-                      <div className="carousel-item-secondary">
+                      <div className={styles.carouselItemSecondary}>
                         {secondary || "Secondary text"}
                       </div>
                     </div>
-                    <div className="side">
+                    <div className={styles.side}>
                       <Link to={"/" + this.state.source}>
                         <Icon name="times" className="cancel-button" />
                       </Link>
                     </div>
                   </div>
-                  <div className="carousel-item-image">
+                  <div className={styles.carouselItemImage}>
                     <img alt={src} src={"/" + src} />
                   </div>
                 </div>
