@@ -1,3 +1,4 @@
+To run site locally
 1. Open Terminal
 2. cd ~/website
 3. npm start

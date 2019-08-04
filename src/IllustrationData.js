@@ -27,30 +27,50 @@ const elements = [{
     primary: "Extinct Nature",
     secondary: "Ink & Watercolor",
     width: 3,
-    src: "images/whale.jpg"
+    src: "images/whale.jpg",
+    imageStyles: {
+        transform: "scale(1.6)",
+        transformOrigin: "40% 40%"
+    }
 }, {
     primary: "Mug Towers",
     secondary: "Ink & Watercolor",
     src: "images/towers.jpg",
     width: 3,
     height: 2,
+    imageStyles: {
+        transform: "scale(1.1)",
+        transformOrigin: "40% 40%"
+    }
 }, {
     primary: "Egg-Plant",
     secondary: "Digital",
-    src: "images/eggplant.jpg",
+    src: "images/final_eggplant.jpg",
     width: 3,
     height: 2,
+    imageStyles: {
+        transform: "scale(1.3)",
+        transformOrigin: "40% 40%"
+    }
 }, {
     primary: "Vancouver",
     secondary: "Digital",
     src: "images/finalmap.jpg",
     width: 3,
     height: 4,
+    imageStyles: {
+        transform: "scale(1.8)",
+        transformOrigin: "20% 25%"
+    }
 }, {
     primary: "Fish Cake",
     secondary: "Intaglio Print",
     width: 3,
-    src: "images/fishcake.jpg"
+    src: "images/fishcake.jpg",
+    imageStyles: {
+        transform: "scale(1.2)",
+        transformOrigin: "30% 20%"
+    }
 }, {
     primary: "Creature Comforts",
     secondary: "Pen, Watercolor, & Digital",
@@ -58,22 +78,29 @@ const elements = [{
     height: 6,
     src: "images/creature_comforts.jpg",
     imageStyles: {
-        transform: "scale(1.2)",
-        transformOrigin: "0% 90%"
-
+        transform: "scale(1.4)",
+        transformOrigin: "15% 50%"
     }
 }, {
     primary: "Living Through Two Shootings",
     secondary: "Digital",
     width: 3,
     height: 2,
-    src: "images/twoshootings.jpg"
+    src: "images/twoshootings.jpg",
+    imageStyles: {
+        transform: "scale(1.0)",
+        transformOrigin: "30% 70%"
+    }
 }, {
     primary: "Musical Quintet",
     secondary: "Ink & Digital",
-    src: "images/quintet.jpg",
     width: 3,
     height: 2,
+    src: "images/quintet.jpg",
+    imageStyles: {
+        transform: "scale(0.9)",
+        transformOrigin: "12% 35%"
+    }
 }, {
     primary: "Sleeping Dogs",
     secondary: "Silkscreen Print",
