@@ -6,6 +6,7 @@ import Header from "./Header";
 import Profile from "./Profile";
 import Carousel from "./Carousel";
 import AboutPage from "./AboutPage";
+import ShopPage from "./ShopPage";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path="/illustration" component={Profile} />
             <Route path="/design" component={Profile} />
             <Route path="/about" component={AboutPage} />
+            <Route path="/shop" component={ShopPage} />
             <Route
               exact
               path="/carousel/:source/:index?"

@@ -44,7 +44,7 @@ class Header extends Component {
             <NavLink className="link" to="/design">
               DESIGN
             </NavLink>
-            <NavLink className="link" to="">
+            <NavLink className="link" to="/shop">
               SHOP
             </NavLink>
             <NavLink className="link" to="/about">
