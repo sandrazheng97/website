@@ -7,10 +7,19 @@ a:visited {
     color: black;
 }
 
+.app {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
 
 .app-body {
     max-width: 1000px;
     margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .copyright {

@@ -11,9 +11,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="app">
           <Header />
-          <div className="app-body">
+          <div className="app-body" ref={this.profileElement}>
             <Route exact path="/" component={Profile} />
             <Route path="/illustration" component={Profile} />
             <Route path="/design" component={Profile} />
