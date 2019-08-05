@@ -6,6 +6,8 @@ import "./Profile.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
+import ReactResizeDetector from "react-resize-detector";
+
 const kNumColumns = 6;
 const kColumnSpacing = 10;
 
@@ -20,7 +22,6 @@ class Profile extends Component {
         this.state = {
             source,
             elements
-            //
         };
         this.onScroll = this.onScroll.bind(this);
         this.profileElement = React.createRef();
@@ -39,22 +40,14 @@ class Profile extends Component {
         });
     }
 
-    componentDidMount() {
-        window.addEventListener("resize", this.onScroll, false);
-        this.setState({ gridHeight: this.getGridHeight() });
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.onScroll, false);
-    }
-
     render() {
         return (
-            <div
-                ref={this.profileElement}
-                className="profile"
-                style={{ width: "100%" }}
-            >
+            <div ref={this.profileElement} className="profile">
+                <ReactResizeDetector
+                    handleWidth
+                    handleHeight
+                    onResize={this.onScroll}
+                />
                 <div
                     className="gallery"
                     style={{
