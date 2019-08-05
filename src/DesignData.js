@@ -74,15 +74,39 @@ const elements = [{
     src: "images/tmrland_mockup.jpg",
     width: 2,
     height: 3,
+    imageStyles: {
+        transform: "scale(1.8)",
+        transformOrigin: "30% 40%"
+    }
 }, {
     primary: "Bergamot & Lime",
-    secondary: "Digital",
+    secondary: "Scented Candle Packaging",
     src: "images/scented_candle.jpg",
     width: 4,
     height: 3,
     imageStyles: {
         transform: "scale(1.5)",
         transformOrigin: "30% 50%"
+    }
+}, {
+    primary: "Lavender Berry",
+    secondary: "Chocolate Flavored Powder Packaging",
+    src: "images/lavender_berry.jpg",
+    width: 3,
+    height: 3,
+    imageStyles: {
+        transform: "scale(1.6)",
+        transformOrigin: "50% 50%"
+    }
+}, {
+    primary: "Primrose Lemon",
+    secondary: "Chocolate Flavored Powder Packaging",
+    src: "images/primrose_lemon.jpg",
+    width: 3,
+    height: 3,
+    imageStyles: {
+        transform: "scale(1.6)",
+        transformOrigin: "50% 50%"
     }
 }, ]
 
