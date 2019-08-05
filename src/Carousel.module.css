@@ -1,0 +1,89 @@
+.container {
+  width: 100%;
+  flex: 1;
+  background: white;
+  display: flex;
+  flex-direction: column
+}
+
+
+
+.cancelContainer {
+  text-align: right;
+  color: black;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.cancelButton:hover {
+  color: var(--peach);
+}
+
+.carouselContainer {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.carouselHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.carouselDescription {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carouselItemImage {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid;
+}
+
+.carouselItemImage img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.carouselItemPrimary {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.carouselItemSecondary {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.arrow {
+  padding: 40px;
+  font-size: 40px;
+  width: 15px;
+}
+
+.thumbnailsContainer {
+  width: 100%;
+}
+
+.arrowsContainer {
+  display: flex;
+  justify-content: center;
+
+}
