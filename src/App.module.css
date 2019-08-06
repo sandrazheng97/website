@@ -1,10 +1,10 @@
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 a:visited {
-    color: black;
+  color: black;
 }
 
 .app {
@@ -15,16 +15,18 @@ a:visited {
 }
 
 .appBody {
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .copyright {
-    padding: 20px 0 20px 20px;
-    font-style: italic;
-    font-size: 10px;
+  display: flex;
+  padding-left: 20px;
+  font-style: italic;
+  font-size: 10px;
+  align-items: center;
 }

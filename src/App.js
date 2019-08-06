@@ -8,6 +8,8 @@ import Carousel from "./Carousel";
 import AboutPage from "./AboutPage";
 import ShopPage from "./ShopPage";
 
+import Constants from "./Constants.js";
+
 class App extends Component {
   render() {
     return (
@@ -18,14 +20,17 @@ class App extends Component {
             <Route exact path="/" component={Profile} />
             <Route path="/illustration" component={Profile} />
             <Route path="/design" component={Profile} />
-            <Route path="/about" component={AboutPage} />
+            // <Route path="/about" component={AboutPage} />
             <Route path="/shop" component={ShopPage} />
             <Route
               exact
               path="/carousel/:source/:index?"
               component={Carousel}
             />
-            <div className={styles.copyright}>
+            <div
+              className={styles.copyright}
+              style={{ height: Constants.copyrightHeight }}
+            >
               Copyright © 2019 Sandra Zheng
             </div>
           </div>

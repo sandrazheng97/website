@@ -18,14 +18,16 @@ class Header extends Component {
     this.state = {
       headerColor: "white"
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll.bind(this));
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll.bind(this));
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
   handleScroll(event) {

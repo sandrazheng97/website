@@ -11,7 +11,7 @@ import styles from "./Carousel.module.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
-import { SizeMe } from "react-sizeme";
+import Constants from "./Constants.js";
 
 function mod(n, m) {
   return ((n % m) + m) % m;
@@ -20,19 +20,12 @@ function mod(n, m) {
 const kShowThumbnailWidthThreshold = 600;
 const kShowThumbnailHeightThreshold = 500;
 const kMargin = 20;
-const kThumbnailHeight = 150;
-const kArrowsContainerHeight = 40;
-const kCancelContainerHeight = 25;
-
-const kHeaderHeight = 120;
-const kCopyrightHeight = 52;
 
 class Carousel extends Component {
   constructor(props) {
     super(props);
     const source = props.match.params.source;
     var elements = source === "design" ? DesignElements : IllustrationElements;
-    console.log(source);
 
     const selected = parseInt(props.match.params.index) || 0;
     console.log(selected);
@@ -42,7 +35,6 @@ class Carousel extends Component {
       thumbnail: selected,
       elements,
       thumbnails: elements,
-      thumbnailsContainerWidth: 1,
       showThumbnails: true,
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight
@@ -150,7 +142,10 @@ class Carousel extends Component {
     } = this.state;
 
     const heightSpace =
-      windowHeight - kHeaderHeight - kCancelContainerHeight - kCopyrightHeight;
+      windowHeight -
+      Constants.headerHeight -
+      Constants.cancelContainerHeight -
+      Constants.copyrightHeight;
     const widthSpace = windowWidth;
 
     const showThumbnails =
@@ -160,14 +155,13 @@ class Carousel extends Component {
 
     const carouselImageHeight =
       (showThumbnails
-        ? maxCarouselImageSize - kThumbnailHeight
-        : maxCarouselImageSize - kArrowsContainerHeight) - kMargin;
-    console.log("calcualted %d", widthSpace);
+        ? maxCarouselImageSize - Constants.thumbnailContainerHeight
+        : maxCarouselImageSize - Constants.arrowsContainerHeight) - kMargin;
     return (
       <div className={styles.container}>
         <div
           className={styles.cancelContainer}
-          style={{ height: kCancelContainerHeight }}
+          style={{ height: Constants.cancelContainerHeight }}
         >
           <Link to={"/" + this.state.source}>
             <Icon name="times" className={styles.cancelButton} />
@@ -178,49 +172,45 @@ class Carousel extends Component {
           className={styles.carouselContainer}
           ref={this.carouselContainerElement}
         >
-          {/*<div
+          <ReactCarousel
+            infinite
+            centered
+            value={value}
+            onChange={this.onChangeCarousel}
             className={styles.carousel}
-            style={{ height: carouselImageHeight, width: windowWidth }}
-          />*/}
-          {
-            <ReactCarousel
-              infinite
-              centered
-              value={value}
-              onChange={this.onChangeCarousel}
-              className={styles.carousel}
-              itemWidth={widthSpace}
-              slides={elements.map(({ primary, secondary, src }, i) => (
-                <div
-                  key={i}
-                  className={styles.carouselItem}
-                  style={{
-                    height: carouselImageHeight,
-                    width: widthSpace
-                  }}
-                >
-                  <div className={styles.carouselHeader}>
-                    <div className={styles.carouselDescription}>
-                      <div className={styles.carouselItemPrimary}>
-                        {primary || "Primary text"}
-                      </div>
-                      <div className={styles.carouselItemSecondary}>
-                        {secondary || "Secondary text"}
-                      </div>
+            itemWidth={widthSpace}
+            slides={elements.map(({ primary, secondary, src }, i) => (
+              <div
+                key={i}
+                className={styles.carouselItem}
+                style={{
+                  height: carouselImageHeight,
+                  width: widthSpace
+                }}
+              >
+                <div className={styles.carouselHeader}>
+                  <div className={styles.carouselDescription}>
+                    <div className={styles.carouselItemPrimary}>
+                      {primary || "Primary text"}
+                    </div>
+                    <div className={styles.carouselItemSecondary}>
+                      {secondary || "Secondary text"}
                     </div>
                   </div>
-                  <div className={styles.carouselItemImage}>
-                    <img alt={src} src={"/" + src} />
-                  </div>
                 </div>
-              ))}
-            />
-          }
+                <div className={styles.carouselItemImage}>
+                  <img alt={src} src={"/" + src} />
+                </div>
+              </div>
+            ))}
+          />
           <div
             className={styles.thumbnailsContainer}
             style={{
               marginTop: kMargin,
-              height: showThumbnails ? kThumbnailHeight : kArrowsContainerHeight
+              height: showThumbnails
+                ? Constants.thumbnailContainerHeight
+                : Constants.arrowsContainerHeight
             }}
           >
             {showThumbnails ? (
@@ -236,13 +226,13 @@ class Carousel extends Component {
                 value={showThumbnails ? thumbnail : value}
                 onChange={this.onChangeThumbnailsList}
                 slidesPerScroll={showThumbnails ? 3 : 1}
-                itemWidth={kThumbnailHeight}
+                itemWidth={Constants.thumbnailContainerHeight}
                 slides={elements.map(({ src }, i) => (
                   <Thumbnail
                     value={i}
                     src={"/" + src}
-                    width={kThumbnailHeight - 20}
-                    height={kThumbnailHeight - 20}
+                    width={Constants.thumbnailContainerHeight - 20}
+                    height={Constants.thumbnailContainerHeight - 20}
                     onClick={this.onClickThumbnail}
                     selected={mod(value, this.state.thumbnails.length) === i}
                   />
@@ -251,7 +241,7 @@ class Carousel extends Component {
             ) : (
               <div
                 className={styles.arrowsContainer}
-                style={{ height: kArrowsContainerHeight }}
+                style={{ height: Constants.arrowsContainerHeight }}
               >
                 <Icon
                   className={styles.arrow}

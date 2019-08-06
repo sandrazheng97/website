@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import LazyLoad from "react-lazyload";
 import ClassNames from "classnames";
 
-import "./Thumbnail.css";
+import styles from "./Thumbnail.module.css";
 
 class Thumbnail extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Thumbnail extends Component {
     const { src, height, width } = this.props;
     return (
       <div
-        className={"thumbnail"}
+        className={styles.thumbnail}
         onClick={this.handleClick}
         style={{ width, height }}
       >
@@ -30,9 +30,9 @@ class Thumbnail extends Component {
             alt={src}
             src={src}
             align="middle"
-            className={ClassNames({
-              "thumbnail-selected": this.props.selected
-            })}
+            className={ClassNames(
+              this.props.selected && styles.thumbnailSelected
+            )}
           />
         </LazyLoad>
       </div>
