@@ -25,6 +25,11 @@ class AboutPage extends Component {
             Vancouver, BC. Her love for nature, animals, and people influence
             the way her work is shaped.
           </div>
+          <div className={styles.resume}>
+            <a href="/images/resume.pdf" target="_blank">
+              Resume
+            </a>
+          </div>
         </div>
       </div>
     );
