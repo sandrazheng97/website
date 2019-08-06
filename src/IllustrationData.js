@@ -29,7 +29,7 @@ const elements = [{
     width: 3,
     src: "images/whale.jpg",
     imageStyles: {
-        transform: "scale(1.6)",
+        transform: "scale(1.5)",
         transformOrigin: "40% 40%"
     }
 }, {
@@ -53,7 +53,7 @@ const elements = [{
         transformOrigin: "40% 40%"
     }
 }, {
-    primary: "Vancouver",
+    primary: "VANCOUVER",
     secondary: "Digital",
     src: "images/finalmap.jpg",
     width: 3,
