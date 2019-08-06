@@ -18,16 +18,22 @@ class Thumbnail extends Component {
   }
 
   render() {
-    const { src } = this.props;
+    const { src, height, width } = this.props;
     return (
       <div
-        className={ClassNames("thumbnail", {
-          "thumbnail-selected": this.props.selected
-        })}
+        className={"thumbnail"}
         onClick={this.handleClick}
+        style={{ width, height }}
       >
         <LazyLoad>
-          <img alt={src} src={src} align="middle" />
+          <img
+            alt={src}
+            src={src}
+            align="middle"
+            className={ClassNames({
+              "thumbnail-selected": this.props.selected
+            })}
+          />
         </LazyLoad>
       </div>
     );

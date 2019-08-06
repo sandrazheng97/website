@@ -13,7 +13,8 @@
     "react-masonry-infinite": "^1.2.2",
     "react-resize-detector": "^4.2.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-sizeme": "^2.6.7"
   },
   "scripts": {
     "start": "react-scripts start",

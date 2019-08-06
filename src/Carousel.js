@@ -11,7 +11,7 @@ import styles from "./Carousel.module.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
-import ReactResizeDetector from "react-resize-detector";
+import { SizeMe } from "react-sizeme";
 
 function mod(n, m) {
   return ((n % m) + m) % m;
@@ -20,7 +20,12 @@ function mod(n, m) {
 const kShowThumbnailWidthThreshold = 600;
 const kShowThumbnailHeightThreshold = 500;
 const kMargin = 20;
-const kThumbnailHeight = 200;
+const kThumbnailHeight = 150;
+const kArrowsContainerHeight = 40;
+const kCancelContainerHeight = 25;
+
+const kHeaderHeight = 120;
+const kCopyrightHeight = 52;
 
 class Carousel extends Component {
   constructor(props) {
@@ -38,10 +43,12 @@ class Carousel extends Component {
       elements,
       thumbnails: elements,
       thumbnailsContainerWidth: 1,
-      showThumbnails: true
+      showThumbnails: true,
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
     };
     this.onChangeCarousel = this.onChangeCarousel.bind(this);
-    this.onChangeThumbnails = this.onChangeThumbnails.bind(this);
+    this.onChangeThumbnailsList = this.onChangeThumbnailsList.bind(this);
     this.onClickThumbnail = this.onClickThumbnail.bind(this);
     this.onClickArrow = this.onClickArrow.bind(this);
 
@@ -49,40 +56,24 @@ class Carousel extends Component {
     this.carouselContainerElement = React.createRef();
   }
 
-  componentDidMount() {
-    this.onResize();
+  onResize() {
+    this.setState({
+      windowHeight: window.innerHeight,
+      windowWidth:
+        this.carouselContainerElement.current.clientWidth || window.innerWidth
+    });
   }
 
-  onResize() {
-    const maxHeight = this.carouselContainerElement.current.clientHeight;
-    const maxWidth = this.carouselContainerElement.current.clientWidth;
-    const carouselImageHeight = Math.min(maxHeight, maxWidth);
-    const showThumbnails =
-      maxHeight >= kShowThumbnailHeightThreshold &&
-      maxWidth >= kShowThumbnailWidthThreshold;
-    console.log(
-      "resize %d %d %s",
-      maxHeight,
-      maxWidth,
-      showThumbnails.toString()
-    );
+  componentDidMount() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
+  }
 
-    if (showThumbnails) {
-      this.setState({
-        showThumbnails,
-        carouselWidth: maxWidth,
-        carouselImageHeight: carouselImageHeight - kThumbnailHeight - kMargin,
-        thumbnailsContainerWidth: Math.min(maxWidth, 5 * kThumbnailHeight)
-      });
-    } else {
-      const thumbnailsContainerWidth = kThumbnailHeight - kMargin;
-      this.setState({
-        showThumbnails,
-        carouselWidth: maxWidth,
-        carouselImageHeight: carouselImageHeight - thumbnailsContainerWidth,
-        thumbnailsContainerWidth
-      });
-    }
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
   }
 
   onChangeCarousel(value) {
@@ -95,12 +86,8 @@ class Carousel extends Component {
     this.setState({ value, thumbnail: value });
   }
 
-  onChangeThumbnails(thumbnail) {
-    if (this.state.showThumbnails) {
-      this.setState({ thumbnail });
-    } else {
-      this.onClickThumbnail(thumbnail);
-    }
+  onChangeThumbnailsList(thumbnail) {
+    this.setState({ thumbnail });
   }
 
   onClickThumbnail(value) {
@@ -111,8 +98,8 @@ class Carousel extends Component {
         parseInt(mod(value, this.state.thumbnails.length))
     );
 
-    const adjustedValue = this.getThumbnailIndex(
-      this.state.thumbnail,
+    const adjustedValue = this.getCarouselIndex(
+      this.state.value,
       parseInt(value)
     );
     this.setState({
@@ -122,85 +109,119 @@ class Carousel extends Component {
   }
 
   onClickArrow(delta) {
-    this.onChangeThumbnails(this.state.thumbnail + delta);
+    console.log("click arrow %d d", this.state.value, delta);
+    this.setState({
+      value: this.state.value + delta
+    });
   }
 
-  getThumbnailIndex(centerThumbnailIndex, targetListIndex) {
+  getCarouselIndex(centerThumbnailIndex, targetListIndex) {
     // Convert index in list to a thumbnail index.
     const centerListIndex = mod(
       centerThumbnailIndex,
       this.state.elements.length
     );
-    var delta;
-    if (Math.abs(targetListIndex - centerListIndex) > 2) {
-      if (targetListIndex > centerListIndex) {
-        delta =
-          targetListIndex - (centerListIndex + this.state.elements.length);
-      } else {
-        delta = targetListIndex + this.state.elements.length - centerListIndex;
-      }
-      return centerThumbnailIndex + delta;
+
+    var left, right;
+    if (targetListIndex > centerListIndex) {
+      right = targetListIndex - centerListIndex;
+      left = centerListIndex + this.state.elements.length - targetListIndex;
+    } else {
+      left = centerListIndex - targetListIndex;
+      right = targetListIndex + this.state.elements.length - centerListIndex;
     }
-    delta = targetListIndex - centerListIndex;
-    return centerThumbnailIndex + delta;
+
+    if (right > left) {
+      // go left
+      return centerThumbnailIndex - left;
+    } else {
+      // go right
+      return centerThumbnailIndex + right;
+    }
   }
 
   render() {
     const {
-      showThumbnails,
-      carouselWidth,
-      carouselImageHeight,
-      thumbnail,
+      windowHeight,
+      windowWidth,
       elements,
+      thumbnail,
       value
     } = this.state;
+
+    const heightSpace =
+      windowHeight - kHeaderHeight - kCancelContainerHeight - kCopyrightHeight;
+    const widthSpace = windowWidth;
+
+    const showThumbnails =
+      heightSpace >= kShowThumbnailHeightThreshold &&
+      widthSpace >= kShowThumbnailWidthThreshold;
+    const maxCarouselImageSize = heightSpace;
+
+    const carouselImageHeight =
+      (showThumbnails
+        ? maxCarouselImageSize - kThumbnailHeight
+        : maxCarouselImageSize - kArrowsContainerHeight) - kMargin;
+    console.log("calcualted %d", widthSpace);
     return (
-      <div className={styles.container} ref={this.carouselContainerElement}>
-        <ReactResizeDetector
-          handleWidth
-          handleHeight
-          onResize={this.onResize}
-        />
-        <div className={styles.cancelContainer}>
+      <div className={styles.container}>
+        <div
+          className={styles.cancelContainer}
+          style={{ height: kCancelContainerHeight }}
+        >
           <Link to={"/" + this.state.source}>
             <Icon name="times" className={styles.cancelButton} />
           </Link>
         </div>
-        <div className={styles.carouselContainer}>
-          <ReactCarousel
-            infinite
-            centered
-            value={value}
-            onChange={this.onChangeCarousel}
-            itemWidth={carouselWidth}
-            slides={elements.map(({ primary, secondary, src }, i) => (
-              <div
-                key={i}
-                className={styles.carouselItem}
-                style={{
-                  height: carouselImageHeight,
-                  width: carouselWidth
-                }}
-              >
-                <div className={styles.carouselHeader}>
-                  <div className={styles.carouselDescription}>
-                    <div className={styles.carouselItemPrimary}>
-                      {primary || "Primary text"}
-                    </div>
-                    <div className={styles.carouselItemSecondary}>
-                      {secondary || "Secondary text"}
+
+        <div
+          className={styles.carouselContainer}
+          ref={this.carouselContainerElement}
+        >
+          {/*<div
+            className={styles.carousel}
+            style={{ height: carouselImageHeight, width: windowWidth }}
+          />*/}
+          {
+            <ReactCarousel
+              infinite
+              centered
+              value={value}
+              onChange={this.onChangeCarousel}
+              className={styles.carousel}
+              itemWidth={widthSpace}
+              slides={elements.map(({ primary, secondary, src }, i) => (
+                <div
+                  key={i}
+                  className={styles.carouselItem}
+                  style={{
+                    height: carouselImageHeight,
+                    width: widthSpace
+                  }}
+                >
+                  <div className={styles.carouselHeader}>
+                    <div className={styles.carouselDescription}>
+                      <div className={styles.carouselItemPrimary}>
+                        {primary || "Primary text"}
+                      </div>
+                      <div className={styles.carouselItemSecondary}>
+                        {secondary || "Secondary text"}
+                      </div>
                     </div>
                   </div>
+                  <div className={styles.carouselItemImage}>
+                    <img alt={src} src={"/" + src} />
+                  </div>
                 </div>
-                <div className={styles.carouselItemImage}>
-                  <img alt={src} src={"/" + src} />
-                </div>
-              </div>
-            ))}
-          />
+              ))}
+            />
+          }
           <div
             className={styles.thumbnailsContainer}
-            style={{ marginTop: kMargin }}
+            style={{
+              marginTop: kMargin,
+              height: showThumbnails ? kThumbnailHeight : kArrowsContainerHeight
+            }}
           >
             {showThumbnails ? (
               <ReactCarousel
@@ -213,20 +234,25 @@ class Carousel extends Component {
                 addArrowClickHandler
                 className={styles.thumbnails}
                 value={showThumbnails ? thumbnail : value}
-                onChange={this.onChangeThumbnails}
+                onChange={this.onChangeThumbnailsList}
                 slidesPerScroll={showThumbnails ? 3 : 1}
                 itemWidth={kThumbnailHeight}
                 slides={elements.map(({ src }, i) => (
                   <Thumbnail
                     value={i}
                     src={"/" + src}
+                    width={kThumbnailHeight - 20}
+                    height={kThumbnailHeight - 20}
                     onClick={this.onClickThumbnail}
                     selected={mod(value, this.state.thumbnails.length) === i}
                   />
                 ))}
               />
             ) : (
-              <div className={styles.arrowsContainer}>
+              <div
+                className={styles.arrowsContainer}
+                style={{ height: kArrowsContainerHeight }}
+              >
                 <Icon
                   className={styles.arrow}
                   name="angle-left"

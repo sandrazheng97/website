@@ -6,8 +6,6 @@
   flex-direction: column
 }
 
-
-
 .cancelContainer {
   text-align: right;
   color: black;
@@ -24,6 +22,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.carousel {
 }
 
 .carouselItem {
@@ -52,7 +53,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  border: 1px solid;
+  width: 100%;
 }
 
 .carouselItemImage img {
@@ -85,5 +86,8 @@
 .arrowsContainer {
   display: flex;
   justify-content: center;
+}
 
+.arrowsContainer > .arrow {
+  padding: 0 40px;
 }

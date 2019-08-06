@@ -1,6 +1,4 @@
 .thumbnail {
-  width: 150px;
-  height: 150px;
   /*background: red;*/
   display:flex;
   align-items:center;
@@ -14,4 +12,5 @@
 
 .thumbnail-selected {
   border: 3px solid;
+  box-sizing: border-box;
 }
