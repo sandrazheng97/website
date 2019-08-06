@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import LazyLoad from "react-lazyload";
+import Icon from "react-fa";
 
-import "./Profile.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
 import ReactResizeDetector from "react-resize-detector";
 
 import Constants from "./Constants.js";
+import styles from "./Profile.module.css";
 
 class Profile extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Profile extends Component {
       elements
     };
     this.onScroll = this.onScroll.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
     this.profileElement = React.createRef();
   }
 
@@ -39,16 +41,20 @@ class Profile extends Component {
     });
   }
 
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
-      <div ref={this.profileElement} className="profile">
+      <div ref={this.profileElement} className={styles.profile}>
         <ReactResizeDetector
           handleWidth
           handleHeight
           onResize={this.onScroll}
         />
         <div
-          className="gallery"
+          className={styles.gallery}
           style={{
             gridAutoRows: this.state.gridHeight,
             gridGap: Constants.columnSpacing
@@ -63,7 +69,7 @@ class Profile extends Component {
               style.gridColumnEnd = "span " + parseInt(width);
             }
             return (
-              <div key={i} className="card" style={style}>
+              <div key={i} className={styles.card} style={style}>
                 <Link to={"/carousel" + this.state.source + "/" + parseInt(i)}>
                   <LazyLoad>
                     <img alt={src} src={src} style={imageStyles} />
@@ -72,6 +78,10 @@ class Profile extends Component {
               </div>
             );
           })}
+        </div>
+        <div className={styles.footer} onClick={this.scrollToTop}>
+          <Icon className={styles.arrow} name="arrow-up" />
+          Back to Top
         </div>
       </div>
     );
