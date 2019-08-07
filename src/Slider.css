@@ -1,0 +1,27 @@
+.carousel,
+.carousel .slick-slider,
+.carousel .slick-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.thumbnail .slick-track,
+.carousel .slick-track {
+  position: absolute;
+  height: 100%;
+}
+
+.thumbnail .slick-slide > div,
+.carousel .slick-slide > div {
+  height: 100%;
+}
+
+.carousel .slick-arrow {
+  display: none !important;
+}
+
+.thumbnail .slick-slider,
+.thumbnail .slick-list {
+  height: 100%;
+}

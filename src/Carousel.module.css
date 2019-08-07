@@ -3,7 +3,13 @@
   flex: 1;
   background: white;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+}
+
+.carousel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .cancelContainer {
@@ -24,14 +30,11 @@
   flex-direction: column;
 }
 
-.carousel {
-}
-
 .carouselItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: column;
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .carouselHeader {
@@ -52,13 +55,13 @@
   flex: 1;
   align-items: center;
   justify-content: center;
-  height: 100%;
   width: 100%;
 }
 
 .carouselItemImage img {
-  max-height: 100%;
-  max-width: 100%;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
 .carouselItemPrimary {
@@ -77,6 +80,11 @@
   padding: 40px;
   font-size: 40px;
   width: 15px;
+}
+
+.thumbnails {
+  height: 200px;
+  width: 100%;
 }
 
 .thumbnailsContainer {

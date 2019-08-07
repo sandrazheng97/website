@@ -25,7 +25,7 @@ class Thumbnail extends Component {
         onClick={this.handleClick}
         style={{ width, height }}
       >
-        <LazyLoad>
+        <LazyLoad debouce={false}>
           <img
             alt={src}
             src={src}

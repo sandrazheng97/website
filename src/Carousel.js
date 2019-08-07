@@ -8,10 +8,14 @@ import { Link } from "react-router-dom";
 import Thumbnail from "./Thumbnail";
 
 import styles from "./Carousel.module.css";
+import Slider from "react-slick";
+
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
 import Constants from "./Constants.js";
+import "./Slider.css";
+import ClassNames from "classnames";
 
 function mod(n, m) {
   return ((n % m) + m) % m;
@@ -22,6 +26,108 @@ const kShowThumbnailHeightThreshold = 500;
 const kMargin = 20;
 
 class Carousel extends Component {
+  constructor(props) {
+    super(props);
+    const source = props.match.params.source;
+    var elements = source === "design" ? DesignElements : IllustrationElements;
+
+    const selected = parseInt(props.match.params.index) || 0;
+    console.log(selected);
+    this.state = {
+      source,
+      value: selected,
+      initialValue: selected,
+      thumbnail: selected,
+      elements,
+      thumbnails: elements,
+      showThumbnails: true,
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
+    };
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.initialValue !== nextState.initialValue;
+  }
+
+  onChange(direction) {
+    const delta = direction === "left" ? -1 : 1;
+    this.setState({
+      value: this.state.value + delta
+    });
+  }
+
+  render() {
+    const { elements, initialValue } = this.state;
+    const carouselSettings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      initialSlide: initialValue,
+      onSwipe: this.onChange
+    };
+    const thumbnailSettings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      initialSlide: initialValue
+    };
+    return (
+      <div className={styles.container}>
+        <div
+          className={styles.cancelContainer}
+          style={{ height: Constants.cancelContainerHeight }}
+        >
+          <Link to={"/" + this.state.source}>
+            <Icon name="times" className={styles.cancelButton} />
+          </Link>
+        </div>
+        <div
+          className={ClassNames({ [styles.carousel]: true, carousel: true })}
+        >
+          <Slider {...carouselSettings}>
+            {elements.map(({ primary, secondary, src }, i) => (
+              <div key={i} className={styles.carouselItem}>
+                <div className={styles.carouselHeader}>
+                  <div className={styles.carouselDescription}>
+                    <div className={styles.carouselItemPrimary}>
+                      {primary || "Primary text"}
+                    </div>
+                    <div className={styles.carouselItemSecondary}>
+                      {secondary || "Secondary text"}
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.carouselItemImage}>
+                  <img alt={src} src={"/" + src} />
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+        <div
+          className={ClassNames({ [styles.thumbnails]: true, thumbnail: true })}
+        >
+          <Slider {...thumbnailSettings}>
+            {elements.map(({ primary, secondary, src }, i) => (
+              <div key={i} className={styles.carouselItem}>
+                <div className={styles.carouselItemImage}>
+                  <img alt={src} src={"/" + src} />
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+    );
+  }
+}
+
+class CarouselOther extends Component {
   constructor(props) {
     super(props);
     const source = props.match.params.source;
