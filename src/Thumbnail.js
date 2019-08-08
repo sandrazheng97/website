@@ -38,25 +38,29 @@ class Thumbnail extends Component {
     this.setState({ moveCount: this.state.moveCount + 1 });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.src !== nextProps.src ||
+      this.props.selected !== nextProps.selected
+    );
+  }
+
   render() {
-    const { src, height, width } = this.props;
+    const { src, selected } = this.props;
+    console.log(selected);
     return (
       <div
         className={styles.thumbnail}
         onMouseDown={this.onMouseDown}
         onMouseUp={this.onMouseUp}
         onMouseMove={this.onMouseMove}
-        // onClick={this.handleClick}
-        style={{ width, height }}
       >
         <LazyLoad debouce={false}>
           <img
             alt={src}
             src={src}
             align="middle"
-            className={ClassNames(
-              this.props.selected && styles.thumbnailSelected
-            )}
+            className={ClassNames(selected && styles.thumbnailSelected)}
           />
         </LazyLoad>
       </div>

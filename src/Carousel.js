@@ -50,9 +50,9 @@ class Carousel extends Component {
     this.onClickThumbnail = this.onClickThumbnail.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.initialValue !== nextState.initialValue;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.state.initialValue !== nextState.initialValue;
+  // }
 
   onChange(direction) {
     const delta = direction === "left" ? -1 : 1;
@@ -65,10 +65,13 @@ class Carousel extends Component {
     console.log(value);
     console.log(this.carouselSlider);
     this.carouselSlider.current.slickGoTo(value);
+    this.setState({
+      value
+    });
   }
 
   render() {
-    const { elements, initialValue } = this.state;
+    const { elements, initialValue, value } = this.state;
     const carouselSettings = {
       dots: false,
       infinite: true,
@@ -84,6 +87,7 @@ class Carousel extends Component {
       slidesToScroll: 5,
       initialSlide: initialValue
     };
+    console.log("value %d", value);
     return (
       <div className={styles.container}>
         <div
@@ -119,6 +123,7 @@ class Carousel extends Component {
         </div>
         <div
           className={ClassNames({ [styles.thumbnails]: true, thumbnail: true })}
+          style={{ height: Constants.thumbnailContainerHeight }}
         >
           <Slider {...thumbnailSettings}>
             {elements.map(({ primary, secondary, src }, i) => (
@@ -127,6 +132,7 @@ class Carousel extends Component {
                   value={i}
                   src={"/" + src}
                   onClick={this.onClickThumbnail}
+                  selected={value == i}
                 />
               </div>
             ))}
