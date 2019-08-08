@@ -25,3 +25,7 @@
 .thumbnail .slick-list {
   height: 100%;
 }
+
+.thumbnail .slick-slider {
+  flex: 1;
+}

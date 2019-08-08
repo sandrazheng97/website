@@ -79,14 +79,18 @@
 }
 
 .arrow {
-  padding: 40px;
   font-size: 40px;
-  width: 15px;
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .thumbnails {
   margin-top: 20px;
   width: 100%;
+  display: flex;
 }
 
 .thumbnailsContainer {

@@ -25,6 +25,40 @@ const kShowThumbnailWidthThreshold = 600;
 const kShowThumbnailHeightThreshold = 500;
 const kMargin = 20;
 
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "red" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <Icon
+      className={ClassNames(className, styles.arrow)}
+      style={{ ...style }}
+      name="angle-right"
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onClick}
+    />
+  );
+}
+
 class Carousel extends Component {
   constructor(props) {
     super(props);
@@ -46,8 +80,11 @@ class Carousel extends Component {
     };
 
     this.carouselSlider = React.createRef();
+    this.thumbnailSlider = React.createRef();
     this.onChange = this.onChange.bind(this);
     this.onClickThumbnail = this.onClickThumbnail.bind(this);
+    this.onNext = this.onNext.bind(this);
+    this.onPrev = this.onPrev.bind(this);
   }
 
   // shouldComponentUpdate(nextProps, nextState) {
@@ -70,6 +107,14 @@ class Carousel extends Component {
     });
   }
 
+  onNext() {
+    this.thumbnailSlider.current.slickNext();
+  }
+
+  onPrev() {
+    this.thumbnailSlider.current.slickPrev();
+  }
+
   render() {
     const { elements, initialValue, value } = this.state;
     const carouselSettings = {
@@ -78,14 +123,16 @@ class Carousel extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       initialSlide: initialValue,
-      onSwipe: this.onChange
+      onSwipe: this.onChange,
+      arrows: false
     };
     const thumbnailSettings = {
       dots: false,
       infinite: true,
       slidesToShow: 5,
       slidesToScroll: 5,
-      initialSlide: initialValue
+      initialSlide: initialValue,
+      arrows: false
     };
     console.log("value %d", value);
     return (
@@ -125,18 +172,28 @@ class Carousel extends Component {
           className={ClassNames({ [styles.thumbnails]: true, thumbnail: true })}
           style={{ height: Constants.thumbnailContainerHeight }}
         >
-          <Slider {...thumbnailSettings}>
+          <Icon
+            className={styles.arrow}
+            name="angle-left"
+            onClick={this.onPrev}
+          />
+          <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
             {elements.map(({ primary, secondary, src }, i) => (
               <div key={i} className={styles.carouselItem}>
                 <Thumbnail
                   value={i}
                   src={"/" + src}
                   onClick={this.onClickThumbnail}
-                  selected={value == i}
+                  selected={value === i}
                 />
               </div>
             ))}
           </Slider>
+          <Icon
+            className={styles.arrow}
+            name="angle-right"
+            onClick={this.onNext}
+          />
         </div>
       </div>
     );
