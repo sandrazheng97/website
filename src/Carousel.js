@@ -45,6 +45,7 @@ class Carousel extends Component {
       windowHeight: window.innerHeight
     };
 
+    this.carouselSlider = React.createRef();
     this.onChange = this.onChange.bind(this);
     this.onClickThumbnail = this.onClickThumbnail.bind(this);
   }
@@ -62,6 +63,8 @@ class Carousel extends Component {
 
   onClickThumbnail(value) {
     console.log(value);
+    console.log(this.carouselSlider);
+    this.carouselSlider.current.slickGoTo(value);
   }
 
   render() {
@@ -94,7 +97,7 @@ class Carousel extends Component {
         <div
           className={ClassNames({ [styles.carousel]: true, carousel: true })}
         >
-          <Slider {...carouselSettings}>
+          <Slider {...carouselSettings} ref={this.carouselSlider}>
             {elements.map(({ primary, secondary, src }, i) => (
               <div key={i} className={styles.carouselItem}>
                 <div className={styles.carouselHeader}>

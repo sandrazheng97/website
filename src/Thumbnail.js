@@ -9,6 +9,13 @@ class Thumbnail extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      moveCount: 0
+    };
+
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
   }
 
   handleClick() {
@@ -17,12 +24,29 @@ class Thumbnail extends Component {
     }
   }
 
+  onMouseDown() {
+    this.setState({ moveCount: 0 });
+  }
+
+  onMouseUp() {
+    if (this.state.moveCount < 5) {
+      this.handleClick(this.props.value);
+    }
+  }
+
+  onMouseMove() {
+    this.setState({ moveCount: this.state.moveCount + 1 });
+  }
+
   render() {
     const { src, height, width } = this.props;
     return (
       <div
         className={styles.thumbnail}
-        onClick={this.handleClick}
+        onMouseDown={this.onMouseDown}
+        onMouseUp={this.onMouseUp}
+        onMouseMove={this.onMouseMove}
+        // onClick={this.handleClick}
         style={{ width, height }}
       >
         <LazyLoad debouce={false}>
