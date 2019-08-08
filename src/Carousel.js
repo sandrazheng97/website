@@ -46,6 +46,7 @@ class Carousel extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onClickThumbnail = this.onClickThumbnail.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -57,6 +58,10 @@ class Carousel extends Component {
     this.setState({
       value: this.state.value + delta
     });
+  }
+
+  onClickThumbnail(value) {
+    console.log(value);
   }
 
   render() {
@@ -115,9 +120,11 @@ class Carousel extends Component {
           <Slider {...thumbnailSettings}>
             {elements.map(({ primary, secondary, src }, i) => (
               <div key={i} className={styles.carouselItem}>
-                <div className={styles.carouselItemImage}>
-                  <img alt={src} src={"/" + src} />
-                </div>
+                <Thumbnail
+                  value={i}
+                  src={"/" + src}
+                  onClick={this.onClickThumbnail}
+                />
               </div>
             ))}
           </Slider>
