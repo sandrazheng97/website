@@ -7,6 +7,10 @@
   height: 120px;
 }
 
+.headerContainer {
+  height: ;
+}
+
 .header {
   display: flex;
   height: 120px;
@@ -18,11 +22,17 @@
   transition: all 0.5s ease-in-out;
 }
 
+.largeHeader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
 .header.active {
   background: var(--peach);
 }
 
-.link {
+.largeHeader .link {
   color: black;
   margin-right: 20px;
 }
@@ -36,7 +46,7 @@
   color: white;
 }
 
-.header-item {
+.headerItem {
   align-items: center;
   display: flex;
   flex: 1;
@@ -46,21 +56,21 @@
   margin-left: 40px;
 }
 
-.navigation-item {
+.navigationItem {
   color: var(--gray);
   margin: 0 10px;
 }
 
-.navigation-item:hover {
+.navigationItem:hover {
   color: var(--peach);
 }
 
-.title-container {
+.titleContainer {
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
 
-.header-title {
+.headerTitle {
   width: 300px;
 }
 
@@ -82,11 +92,52 @@
   margin-right: 40px;
 }
 
-.social-item {
+.socialItem {
   font-size: 20px;
   margin: 0 10px;
 }
 
-.social-item:hover {
+.socialItem:hover {
   color: var(--peach);
+}
+
+.miniHeader {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.miniHeaderTitle {
+  flex: 1;
+  max-height: 100%;
+  max-width: 100%;
+  height: 0;
+  object-fit: contain;
+}
+
+.dropdown {
+  width: 100%;
+  height: 50px;
+}
+
+.dropdownContent {
+  width: 100%;
+  z-index: 1;
+  background: white;
+}
+
+.menuButton {
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.menuItem {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+.menuItem a {
+  line-height: 50px;
 }
