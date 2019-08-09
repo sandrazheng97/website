@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LazyLoad from "react-lazyload";
 
 import styles from "./AboutPage.module.css";
+import ClassNames from "classnames";
 
 class AboutPage extends Component {
   constructor(props) {
@@ -32,16 +33,21 @@ class AboutPage extends Component {
   render() {
     const { width } = this.state;
     const image = "/images/sleeping_village.jpg";
+    const showHorizontal = width >= 600;
     return (
-      <div className={styles.container}>
-        <div className={styles.pictureContainer}>
-          <div className={styles.picture}>
-            <LazyLoad>
-              <img alt={image} src={image} align="middle" />
-            </LazyLoad>
-          </div>
-        </div>
-        <div className={styles.aboutDivider} />
+      <div
+        className={ClassNames({
+          [styles.container]: true,
+          [styles.containerVertical]: !showHorizontal
+        })}
+      >
+        <div
+          className={ClassNames({
+            [styles.pictureContainer]: true,
+            [styles.pictureContainerHorizontal]: showHorizontal
+          })}
+          style={{ backgroundImage: "url(" + image + ")" }}
+        ></div>
         <div className={styles.info}>
           <div className={styles.infoTitle}>INFO</div>
           <div className={styles.infoBody}>
