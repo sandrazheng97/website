@@ -25,8 +25,10 @@ class Header extends Component {
       height: window.innerHeight
     };
 
+    this.dropdown = React.createRef();
     this.handleScroll = this.handleScroll.bind(this);
     this.handleResize = this.handleResize.bind(this);
+    this.onClickDropdownItem = this.onClickDropdownItem.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +52,10 @@ class Header extends Component {
     this.setState({ headerColor: window.scrollY > 20 ? "#ffe967" : "white" });
   }
 
+  onClickDropdownItem(event) {
+    this.dropdown.current.hide();
+  }
+
   render() {
     const { headerColor, width, height } = this.state;
 
@@ -57,13 +63,16 @@ class Header extends Component {
     if (width < 1000) {
       headerContent = (
         <div className={styles.miniHeader}>
-          <Dropdown className={styles.dropdown}>
+          <Dropdown className={styles.dropdown} ref={this.dropdown}>
             <DropdownTrigger>
               <div className={ClassNames(styles.menuButton, styles.link)}>
                 MENU
               </div>
             </DropdownTrigger>
-            <DropdownContent className={styles.dropdownContent}>
+            <DropdownContent
+              className={styles.dropdownContent}
+              onClick={this.onClickDropdownItem}
+            >
               <div className={styles.menuItem}>
                 <NavLink className={styles.link} to="/illustration">
                   ILLUSTRATION
