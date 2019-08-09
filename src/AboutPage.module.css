@@ -24,16 +24,16 @@
   background-position: top;
 }
 
-.asdf {
-  flex: 1;
-}
-
 .aboutDivider {
   flex: 1;
 }
 
 .info {
   max-width: 500px;
+}
+
+.infoHorizontal {
+  width: 50%;
 }
 
 .infoTitle {

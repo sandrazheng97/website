@@ -9,7 +9,8 @@ class AboutPage extends Component {
     super(props);
     this.state = {
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
+      isAboutPage: props.match.path === "/about"
     };
 
     this.handleResize = this.handleResize.bind(this);
@@ -31,24 +32,18 @@ class AboutPage extends Component {
   }
 
   render() {
-    const { width } = this.state;
+    const { width, isAboutPage } = this.state;
     const image = "/images/sleeping_village.jpg";
     const showHorizontal = width >= 600;
-    return (
-      <div
-        className={ClassNames({
-          [styles.container]: true,
-          [styles.containerVertical]: !showHorizontal
-        })}
-      >
+    var infoContent;
+    if (isAboutPage) {
+      infoContent = (
         <div
           className={ClassNames({
-            [styles.pictureContainer]: true,
-            [styles.pictureContainerHorizontal]: showHorizontal
+            [styles.info]: true,
+            [styles.infoHorizontal]: showHorizontal
           })}
-          style={{ backgroundImage: "url(" + image + ")" }}
-        ></div>
-        <div className={styles.info}>
+        >
           <div className={styles.infoTitle}>INFO</div>
           <div className={styles.infoBody}>
             Sandra Zheng is a Canadian born illustrator and designer who
@@ -62,6 +57,39 @@ class AboutPage extends Component {
             </a>
           </div>
         </div>
+      );
+    } else {
+      infoContent = (
+        <div
+          className={ClassNames({
+            [styles.info]: true,
+            [styles.infoHorizontal]: showHorizontal
+          })}
+        >
+          <div className={styles.infoTitle}>SHOP</div>
+          <div className={styles.infoBody}>
+            <div>We’re working on our site at the moment.</div>
+            <p>Please check back soon.</p>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        className={ClassNames({
+          [styles.container]: true,
+          [styles.containerVertical]: !showHorizontal
+        })}
+      >
+        <div
+          className={ClassNames({
+            [styles.pictureContainer]: true,
+            [styles.pictureContainerHorizontal]: showHorizontal
+          })}
+          style={{ backgroundImage: "url(" + image + ")" }}
+        />
+        {infoContent}
       </div>
     );
   }
