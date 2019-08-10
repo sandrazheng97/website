@@ -7,6 +7,7 @@ import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
 
 import ReactResizeDetector from "react-resize-detector";
+import LazyLoadImage from "./LazyLoadImage";
 
 import Constants from "./Constants.js";
 import styles from "./Profile.module.css";
@@ -71,9 +72,24 @@ class Profile extends Component {
             return (
               <div key={i} className={styles.card} style={style}>
                 <Link to={"/carousel" + this.state.source + "/" + parseInt(i)}>
-                  <LazyLoad>
+                  <LazyLoadImage src={src} imageStyles={imageStyles} />
+                  {/*<LazyLoad offsetVertical={500}>
+                    <div class="lds-default">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
                     <img alt={src} src={src} style={imageStyles} />
-                  </LazyLoad>
+                  </LazyLoad>*/}
                 </Link>
               </div>
             );
