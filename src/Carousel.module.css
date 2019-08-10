@@ -91,6 +91,7 @@
   margin-top: 20px;
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .thumbnailsContainer {
@@ -104,4 +105,9 @@
 
 .arrowsContainer > .arrow {
   padding: 0 40px;
+}
+
+.arrow:hover {
+  color: var(--peach);
+  cursor: pointer;
 }

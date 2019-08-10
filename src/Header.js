@@ -4,16 +4,13 @@ import { NavLink } from "react-router-dom";
 import { DropdownTrigger, DropdownContent } from "react-simple-dropdown";
 import Dropdown from "react-simple-dropdown";
 import ClassNames from "classnames";
-
+import Constants from "./Constants.js";
 import styles from "./Header.module.css";
 import "./Dropdown.css";
 
-const kLinkedInLink =
-  "https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsandra-zheng-8909aa187%2F&h=AT2fmjskgEUTPRRZwuUyEWGzcFrfILiFSlzPvZcdYcefzA2dzlbVLpyE17cyy0vgz1EX4nKHvu36hsKRLJ_kbxFiHBQZqvI9NzSCHLsuYpAabTat0w0PZTKpfjt0QvMcb0q1pBvOduGFgyDm9wza8XxT";
-const kInstagramLink =
-  "https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fszheng__%2F&h=AT2fmjskgEUTPRRZwuUyEWGzcFrfILiFSlzPvZcdYcefzA2dzlbVLpyE17cyy0vgz1EX4nKHvu36hsKRLJ_kbxFiHBQZqvI9NzSCHLsuYpAabTat0w0PZTKpfjt0QvMcb0q1pBvOduGFgyDm9wza8XxT";
-const kBehanceLink =
-  "https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.behance.net%2Fsandrazheng&h=AT2fmjskgEUTPRRZwuUyEWGzcFrfILiFSlzPvZcdYcefzA2dzlbVLpyE17cyy0vgz1EX4nKHvu36hsKRLJ_kbxFiHBQZqvI9NzSCHLsuYpAabTat0w0PZTKpfjt0QvMcb0q1pBvOduGFgyDm9wza8XxT";
+const kLinkedInLink = "https://www.linkedin.com/in/sandra-zheng-8909aa187/";
+const kInstagramLink = "https://www.instagram.com/szheng__/";
+const kBehanceLink = "https://www.behance.net/sandrazheng";
 const kEmailLink = "mailto:sandrazhengart@gmail.com";
 
 class Header extends Component {
@@ -72,6 +69,7 @@ class Header extends Component {
             <DropdownContent
               className={styles.dropdownContent}
               onClick={this.onClickDropdownItem}
+              style={{ borderBottom: "2px solid " + Constants.peach }}
             >
               <div className={styles.menuItem}>
                 <NavLink className={styles.link} to="/illustration">

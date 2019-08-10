@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import ReactCarousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import Icon from "react-fa";
 import { Link } from "react-router-dom";
@@ -17,13 +16,8 @@ import Constants from "./Constants.js";
 import "./Slider.css";
 import ClassNames from "classnames";
 
-function mod(n, m) {
-  return ((n % m) + m) % m;
-}
-
 const kShowThumbnailWidthThreshold = 600;
 const kShowThumbnailHeightThreshold = 500;
-const kMargin = 20;
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
@@ -51,9 +45,9 @@ class Carousel extends Component {
       thumbnail: selected,
       elements,
       thumbnails: elements,
-      showThumbnails: true,
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight
+      showThumbnails:
+        window.innerWidth >= kShowThumbnailWidthThreshold &&
+        window.innerHeight >= kShowThumbnailHeightThreshold
     };
 
     this.carouselSlider = React.createRef();
@@ -62,6 +56,7 @@ class Carousel extends Component {
     this.onClickThumbnail = this.onClickThumbnail.bind(this);
     this.onNext = this.onNext.bind(this);
     this.onPrev = this.onPrev.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   // shouldComponentUpdate(nextProps, nextState) {
@@ -84,16 +79,40 @@ class Carousel extends Component {
     });
   }
 
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleResize);
+  }
+
+  handleResize(event) {
+    this.setState({
+      showThumbnails:
+        window.innerWidth >= kShowThumbnailWidthThreshold &&
+        window.innerHeight >= kShowThumbnailHeightThreshold
+    });
+  }
+
   onNext() {
-    this.thumbnailSlider.current.slickNext();
+    if (this.state.showThumbnails) {
+      this.thumbnailSlider.current.slickNext();
+    } else {
+      this.carouselSlider.current.slickNext();
+    }
   }
 
   onPrev() {
-    this.thumbnailSlider.current.slickPrev();
+    if (this.state.showThumbnails) {
+      this.thumbnailSlider.current.slickPrev();
+    } else {
+      this.carouselSlider.current.slickPrev();
+    }
   }
 
   render() {
-    const { elements, initialValue, value } = this.state;
+    const { elements, initialValue, value, showThumbnails } = this.state;
     const carouselSettings = {
       dots: false,
       infinite: true,
@@ -111,7 +130,7 @@ class Carousel extends Component {
       initialSlide: initialValue,
       arrows: false
     };
-    console.log("value %d", value);
+
     return (
       <div className={styles.container}>
         <div
@@ -147,25 +166,31 @@ class Carousel extends Component {
         </div>
         <div
           className={ClassNames({ [styles.thumbnails]: true, thumbnail: true })}
-          style={{ height: Constants.thumbnailContainerHeight }}
+          style={{
+            height: showThumbnails
+              ? Constants.thumbnailFullContainerHeight
+              : Constants.thumbnailSmallContainerHeight
+          }}
         >
           <Icon
             className={styles.arrow}
             name="angle-left"
             onClick={this.onPrev}
           />
-          <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
-            {elements.map(({ primary, secondary, src }, i) => (
-              <div key={i} className={styles.carouselItem}>
-                <Thumbnail
-                  value={i}
-                  src={"/" + src}
-                  onClick={this.onClickThumbnail}
-                  selected={value === i}
-                />
-              </div>
-            ))}
-          </Slider>
+          {showThumbnails && (
+            <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
+              {elements.map(({ primary, secondary, src }, i) => (
+                <div key={i} className={styles.carouselItem}>
+                  <Thumbnail
+                    value={i}
+                    src={"/" + src}
+                    onClick={this.onClickThumbnail}
+                    selected={value === i}
+                  />
+                </div>
+              ))}
+            </Slider>
+          )}
           <Icon
             className={styles.arrow}
             name="angle-right"
