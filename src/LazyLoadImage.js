@@ -19,7 +19,7 @@ class LazyLoadImage extends Component {
   }
 
   render() {
-    const { src, imageStyles } = this.props;
+    const { src, imageStyles, imageClassName } = this.props;
     const { loadingIconHidden } = this.state;
     return (
       <LazyLoad offsetVertical={500}>
@@ -45,6 +45,7 @@ class LazyLoadImage extends Component {
         <img
           alt={src}
           src={src}
+          className={imageClassName}
           style={imageStyles}
           onLoad={this.onLoadedImage}
         />

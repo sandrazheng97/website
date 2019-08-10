@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import LazyLoad from "react-lazyload";
 import Icon from "react-fa";
 
 import DesignElements from "./DesignData";
@@ -73,23 +72,6 @@ class Profile extends Component {
               <div key={i} className={styles.card} style={style}>
                 <Link to={"/carousel" + this.state.source + "/" + parseInt(i)}>
                   <LazyLoadImage src={src} imageStyles={imageStyles} />
-                  {/*<LazyLoad offsetVertical={500}>
-                    <div class="lds-default">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                    <img alt={src} src={src} style={imageStyles} />
-                  </LazyLoad>*/}
                 </Link>
               </div>
             );

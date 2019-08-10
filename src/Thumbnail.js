@@ -4,6 +4,7 @@ import LazyLoad from "react-lazyload";
 import ClassNames from "classnames";
 
 import styles from "./Thumbnail.module.css";
+import LazyLoadImage from "./LazyLoadImage";
 
 class Thumbnail extends Component {
   constructor(props) {
@@ -55,14 +56,10 @@ class Thumbnail extends Component {
         onMouseUp={this.onMouseUp}
         onMouseMove={this.onMouseMove}
       >
-        <LazyLoad debouce={false}>
-          <img
-            alt={src}
-            src={src}
-            align="middle"
-            className={ClassNames(selected && styles.thumbnailSelected)}
-          />
-        </LazyLoad>
+        <LazyLoadImage
+          src={src}
+          imageClassName={ClassNames(selected && styles.thumbnailSelected)}
+        />
       </div>
     );
   }
