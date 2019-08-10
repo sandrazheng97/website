@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import Icon from "react-fa";
 import { Link } from "react-router-dom";
-
-import Thumbnail from "./Thumbnail";
-
-import styles from "./Carousel.module.css";
 import Slider from "react-slick";
-
-import DesignElements from "./DesignData";
-import IllustrationElements from "./IllustrationData.js";
-
-import Constants from "./Constants.js";
-import "./Slider.css";
 import ClassNames from "classnames";
 
-const kShowThumbnailWidthThreshold = 600;
-const kShowThumbnailHeightThreshold = 500;
+import Thumbnail from "./Thumbnail";
+import styles from "./Carousel.module.css";
+import "./Slider.css";
+import DesignElements from "./DesignData";
+import IllustrationElements from "./IllustrationData.js";
+import Constants from "./Constants.js";
 
 class Carousel extends Component {
   constructor(props) {
@@ -32,8 +26,8 @@ class Carousel extends Component {
       elements,
       thumbnails: elements,
       showThumbnails:
-        window.innerWidth >= kShowThumbnailWidthThreshold &&
-        window.innerHeight >= kShowThumbnailHeightThreshold
+        window.innerWidth >= Constants.showThumbnailWidthThreshold &&
+        window.innerHeight >= Constants.ShowThumbnailHeightThreshold
     };
 
     this.carouselSlider = React.createRef();
@@ -70,8 +64,8 @@ class Carousel extends Component {
   handleResize(event) {
     this.setState({
       showThumbnails:
-        window.innerWidth >= kShowThumbnailWidthThreshold &&
-        window.innerHeight >= kShowThumbnailHeightThreshold
+        window.innerWidth >= Constants.showThumbnailWidthThreshold &&
+        window.innerHeight >= Constants.showThumbnailHeightThreshold
     });
   }
 

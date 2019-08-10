@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import ClassNames from "classnames";
 
 import styles from "./Thumbnail.module.css";

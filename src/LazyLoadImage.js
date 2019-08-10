@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import LazyLoad from "react-lazyload";
-import "./LoadingAnimation.css";
 import ClassNames from "classnames";
+
+import "./LoadingAnimation.css";
 
 class LazyLoadImage extends Component {
   constructor(props) {

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Icon from "react-fa";
+import ReactResizeDetector from "react-resize-detector";
 
+import LazyLoadImage from "./LazyLoadImage";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
-
-import ReactResizeDetector from "react-resize-detector";
-import LazyLoadImage from "./LazyLoadImage";
-
 import Constants from "./Constants.js";
 import styles from "./Profile.module.css";
 
@@ -23,7 +21,7 @@ class Profile extends Component {
       source,
       elements
     };
-    this.onScroll = this.onScroll.bind(this);
+    this.onResize = this.onResize.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
     this.profileElement = React.createRef();
   }
@@ -35,7 +33,7 @@ class Profile extends Component {
     );
   }
 
-  onScroll() {
+  onResize() {
     this.setState({
       gridHeight: this.getGridHeight()
     });
@@ -51,7 +49,7 @@ class Profile extends Component {
         <ReactResizeDetector
           handleWidth
           handleHeight
-          onResize={this.onScroll}
+          onResize={this.onResize}
         />
         <div
           className={styles.gallery}

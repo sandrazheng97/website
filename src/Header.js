@@ -4,14 +4,10 @@ import { NavLink } from "react-router-dom";
 import { DropdownTrigger, DropdownContent } from "react-simple-dropdown";
 import Dropdown from "react-simple-dropdown";
 import ClassNames from "classnames";
+
 import Constants from "./Constants.js";
 import styles from "./Header.module.css";
 import "./Dropdown.css";
-
-const kLinkedInLink = "https://www.linkedin.com/in/sandra-zheng-8909aa187/";
-const kInstagramLink = "https://www.instagram.com/szheng__/";
-const kBehanceLink = "https://www.behance.net/sandrazheng";
-const kEmailLink = "mailto:sandrazhengart@gmail.com";
 
 class Header extends Component {
   constructor(props) {
@@ -129,12 +125,20 @@ class Header extends Component {
             </LazyLoad>
           </div>
           <div className={ClassNames(styles.headerItem, styles.social)}>
-            <a href={kInstagramLink} rel="noopener noreferrer" target="_blank">
+            <a
+              href={Constants.instagramLink}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <i
                 className={ClassNames(styles.socialItem, "fab", "fa-instagram")}
               />
             </a>
-            <a href={kLinkedInLink} rel="noopener noreferrer" target="_blank">
+            <a
+              href={Constants.linkedInLink}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <i
                 className={ClassNames(
                   styles.socialItem,
@@ -143,12 +147,16 @@ class Header extends Component {
                 )}
               />
             </a>
-            <a href={kBehanceLink} rel="noopener noreferrer" target="_blank">
+            <a
+              href={Constants.behanceLink}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <i
                 className={ClassNames(styles.socialItem, "fab", "fa-behance")}
               />
             </a>
-            <a href={kEmailLink} rel="noopener noreferrer">
+            <a href={Constants.emailLink} rel="noopener noreferrer">
               <i
                 className={ClassNames(styles.socialItem, "far", "fa-envelope")}
               />

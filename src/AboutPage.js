@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import ClassNames from "classnames";
 
 import styles from "./AboutPage.module.css";
-import ClassNames from "classnames";
 
 class AboutPage extends Component {
   constructor(props) {

@@ -6,7 +6,6 @@ import Header from "./Header";
 import Profile from "./Profile";
 import Carousel from "./Carousel";
 import AboutPage from "./AboutPage";
-
 import Constants from "./Constants.js";
 
 class App extends Component {
