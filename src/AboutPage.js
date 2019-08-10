@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import LazyLoad from "react-lazyload";
 
 import styles from "./AboutPage.module.css";
 import ClassNames from "classnames";

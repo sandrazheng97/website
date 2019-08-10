@@ -54,7 +54,7 @@ class Header extends Component {
   }
 
   render() {
-    const { headerColor, width, height } = this.state;
+    const { headerColor, width } = this.state;
 
     var headerContent;
     if (width < 1000) {

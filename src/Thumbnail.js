@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import LazyLoad from "react-lazyload";
 import ClassNames from "classnames";
 
 import styles from "./Thumbnail.module.css";
@@ -48,7 +47,6 @@ class Thumbnail extends Component {
 
   render() {
     const { src, selected } = this.props;
-    console.log(selected);
     return (
       <div
         className={styles.thumbnail}

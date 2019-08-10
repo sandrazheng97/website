@@ -6,7 +6,6 @@ import Header from "./Header";
 import Profile from "./Profile";
 import Carousel from "./Carousel";
 import AboutPage from "./AboutPage";
-import ShopPage from "./ShopPage";
 
 import Constants from "./Constants.js";
 

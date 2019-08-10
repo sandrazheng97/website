@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-import "@brainhubeu/react-carousel/lib/style.css";
 import Icon from "react-fa";
 import { Link } from "react-router-dom";
 
@@ -19,17 +17,6 @@ import ClassNames from "classnames";
 const kShowThumbnailWidthThreshold = 600;
 const kShowThumbnailHeightThreshold = 500;
 
-function PrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
-      onClick={onClick}
-    />
-  );
-}
-
 class Carousel extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +24,6 @@ class Carousel extends Component {
     var elements = source === "design" ? DesignElements : IllustrationElements;
 
     const selected = parseInt(props.match.params.index) || 0;
-    console.log(selected);
     this.state = {
       source,
       value: selected,
@@ -59,10 +45,6 @@ class Carousel extends Component {
     this.handleResize = this.handleResize.bind(this);
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.state.initialValue !== nextState.initialValue;
-  // }
-
   onChange(direction) {
     const delta = direction === "left" ? -1 : 1;
     this.setState({
@@ -71,8 +53,6 @@ class Carousel extends Component {
   }
 
   onClickThumbnail(value) {
-    console.log(value);
-    console.log(this.carouselSlider);
     this.carouselSlider.current.slickGoTo(value);
     this.setState({
       value
