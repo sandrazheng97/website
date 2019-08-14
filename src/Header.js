@@ -147,7 +147,7 @@ class Header extends Component {
                 )}
               />
             </a>
-            <a
+            {/*<a
               href={Constants.behanceLink}
               rel="noopener noreferrer"
               target="_blank"
@@ -155,7 +155,7 @@ class Header extends Component {
               <i
                 className={ClassNames(styles.socialItem, "fab", "fa-behance")}
               />
-            </a>
+            </a>*/}
             <a href={Constants.emailLink} rel="noopener noreferrer">
               <i
                 className={ClassNames(styles.socialItem, "far", "fa-envelope")}
