@@ -58,22 +58,26 @@ class Profile extends Component {
             gridGap: Constants.columnSpacing
           }}
         >
-          {this.state.elements.map(({ height, src, width, imageStyles }, i) => {
-            var style = {};
-            if (height) {
-              style.gridRowEnd = "span " + parseInt(height);
+          {this.state.elements.map(
+            ({ height, srcMini, width, imageStyles }, i) => {
+              var style = {};
+              if (height) {
+                style.gridRowEnd = "span " + parseInt(height);
+              }
+              if (width) {
+                style.gridColumnEnd = "span " + parseInt(width);
+              }
+              return (
+                <div key={i} className={styles.card} style={style}>
+                  <Link
+                    to={"/carousel" + this.state.source + "/" + parseInt(i)}
+                  >
+                    <LazyLoadImage src={srcMini} imageStyles={imageStyles} />
+                  </Link>
+                </div>
+              );
             }
-            if (width) {
-              style.gridColumnEnd = "span " + parseInt(width);
-            }
-            return (
-              <div key={i} className={styles.card} style={style}>
-                <Link to={"/carousel" + this.state.source + "/" + parseInt(i)}>
-                  <LazyLoadImage src={src} imageStyles={imageStyles} />
-                </Link>
-              </div>
-            );
-          })}
+          )}
         </div>
         <div className={styles.footer} onClick={this.scrollToTop}>
           <Icon className={styles.arrow} name="arrow-up" />

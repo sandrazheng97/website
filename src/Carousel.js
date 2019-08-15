@@ -55,6 +55,7 @@ class Carousel extends Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   }
 
   componentWillUnmount() {
@@ -153,11 +154,11 @@ class Carousel extends Component {
           />
           {showThumbnails && (
             <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
-              {elements.map(({ primary, secondary, src }, i) => (
+              {elements.map(({ primary, secondary, srcMini }, i) => (
                 <div key={i} className={styles.carouselItem}>
                   <Thumbnail
                     value={i}
-                    src={"/" + src}
+                    src={"/" + srcMini}
                     onClick={this.onClickThumbnail}
                     selected={value === i}
                   />
