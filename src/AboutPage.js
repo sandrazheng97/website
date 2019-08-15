@@ -1,22 +1,47 @@
 import React, { Component } from "react";
-import LazyLoad from "react-lazyload";
+import ClassNames from "classnames";
 
 import styles from "./AboutPage.module.css";
 
 class AboutPage extends Component {
-    render() {
-        const image = "/images/sleeping_village.jpg";
-        return (
-            <div className={styles.container}>
-        <div className={styles.pictureContainer}>
-          <div className={styles.picture}>
-            <LazyLoad>
-              <img alt={image} src={image} align="middle" />
-            </LazyLoad>
-          </div>
-        </div>
-        <div className={styles.aboutDivider} />
-        <div className={styles.info}>
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      isAboutPage: props.match.path === "/about"
+    };
+
+    this.handleResize = this.handleResize.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleResize);
+  }
+
+  handleResize(event) {
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+  }
+
+  render() {
+    const { width, isAboutPage } = this.state;    const image = "/images/sleeping_village.jpg";
+    const showHorizontal = width >= 600;
+    var infoContent;
+    if (isAboutPage) {
+      infoContent = (
+        <div
+          className={ClassNames({
+            [styles.info]: true,
+            [styles.infoHorizontal]: showHorizontal
+          })}
+        >
           <div className={styles.infoTitle}>Hi There! </div>
           <div className={styles.infoBody}>
             My name is Sandra. I am a Canadian Illustrator and Designer from Vancouver, BC. 
@@ -27,12 +52,49 @@ class AboutPage extends Component {
             
             For jobs, commission enquiries, or simply to say hi: 
             sandrazhengart@gmail.com
-           
+          </div>
+          <div className={styles.resume}>
+            <a href="/images/resume.pdf" target="_blank">
+              Resume
+            </a>
           </div>
         </div>
-      </div>
-        );
+      );
+    } else {
+      infoContent = (
+        <div
+          className={ClassNames({
+            [styles.info]: true,
+            [styles.infoHorizontal]: showHorizontal
+          })}
+        >
+          <div className={styles.infoTitle}>SHOP</div>
+          <div className={styles.infoBody}>
+            <div>We’re working on our site at the moment.</div>
+            <p>Please check back soon.</p>
+          </div>
+        </div>
+      );
     }
+
+    return (
+      <div
+        className={ClassNames({
+          [styles.container]: true,
+          [styles.containerVertical]: !showHorizontal
+        })}
+      >
+        <div
+          className={ClassNames({
+            [styles.pictureContainer]: true,
+            [styles.pictureContainerHorizontal]: showHorizontal
+          })}
+          style={{ backgroundImage: "url(" + image + ")" }}
+        />
+        {infoContent}
+      </div>
+    );
+  }
 }
 
 export default AboutPage;

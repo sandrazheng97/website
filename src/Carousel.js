@@ -1,187 +1,126 @@
 import React, { Component } from "react";
-
-import ReactCarousel from "@brainhubeu/react-carousel";
-import "@brainhubeu/react-carousel/lib/style.css";
 import Icon from "react-fa";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import ClassNames from "classnames";
 
 import Thumbnail from "./Thumbnail";
-
 import styles from "./Carousel.module.css";
+import "./Slider.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
-
-import ReactResizeDetector from "react-resize-detector";
-
-function mod(n, m) {
-  return ((n % m) + m) % m;
-}
-
-const kShowThumbnailWidthThreshold = 600;
-const kShowThumbnailHeightThreshold = 500;
-const kMargin = 20;
-const kThumbnailHeight = 200;
+import Constants from "./Constants.js";
 
 class Carousel extends Component {
   constructor(props) {
     super(props);
     const source = props.match.params.source;
     var elements = source === "design" ? DesignElements : IllustrationElements;
-    console.log(source);
 
     const selected = parseInt(props.match.params.index) || 0;
-    console.log(selected);
     this.state = {
       source,
       value: selected,
+      initialValue: selected,
       thumbnail: selected,
       elements,
       thumbnails: elements,
-      thumbnailsContainerWidth: 1,
-      showThumbnails: true
+      showThumbnails:
+        window.innerWidth >= Constants.showThumbnailWidthThreshold &&
+        window.innerHeight >= Constants.ShowThumbnailHeightThreshold
     };
-    this.onChangeCarousel = this.onChangeCarousel.bind(this);
-    this.onChangeThumbnails = this.onChangeThumbnails.bind(this);
+
+    this.carouselSlider = React.createRef();
+    this.thumbnailSlider = React.createRef();
+    this.onChange = this.onChange.bind(this);
     this.onClickThumbnail = this.onClickThumbnail.bind(this);
-    this.onClickArrow = this.onClickArrow.bind(this);
-
-    this.onResize = this.onResize.bind(this);
-    this.carouselContainerElement = React.createRef();
+    this.onNext = this.onNext.bind(this);
+    this.onPrev = this.onPrev.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
-  componentDidMount() {
-    this.onResize();
-  }
-
-  onResize() {
-    const maxHeight = this.carouselContainerElement.current.clientHeight;
-    const maxWidth = this.carouselContainerElement.current.clientWidth;
-    const carouselImageHeight = Math.min(maxHeight, maxWidth);
-    const showThumbnails =
-      maxHeight >= kShowThumbnailHeightThreshold &&
-      maxWidth >= kShowThumbnailWidthThreshold;
-    console.log(
-      "resize %d %d %s",
-      maxHeight,
-      maxWidth,
-      showThumbnails.toString()
-    );
-
-    if (showThumbnails) {
-      this.setState({
-        showThumbnails,
-        carouselWidth: maxWidth,
-        carouselImageHeight: carouselImageHeight - kThumbnailHeight - kMargin,
-        thumbnailsContainerWidth: Math.min(maxWidth, 5 * kThumbnailHeight)
-      });
-    } else {
-      const thumbnailsContainerWidth = kThumbnailHeight - kMargin;
-      this.setState({
-        showThumbnails,
-        carouselWidth: maxWidth,
-        carouselImageHeight: carouselImageHeight - thumbnailsContainerWidth,
-        thumbnailsContainerWidth
-      });
-    }
-  }
-
-  onChangeCarousel(value) {
-    this.props.history.push(
-      "/carousel/" +
-        this.state.source +
-        "/" +
-        parseInt(mod(value, this.state.thumbnails.length))
-    );
-    this.setState({ value, thumbnail: value });
-  }
-
-  onChangeThumbnails(thumbnail) {
-    if (this.state.showThumbnails) {
-      this.setState({ thumbnail });
-    } else {
-      this.onClickThumbnail(thumbnail);
-    }
-  }
-
-  onClickThumbnail(value) {
-    this.props.history.push(
-      "/carousel/" +
-        this.state.source +
-        "/" +
-        parseInt(mod(value, this.state.thumbnails.length))
-    );
-
-    const adjustedValue = this.getThumbnailIndex(
-      this.state.thumbnail,
-      parseInt(value)
-    );
+  onChange(direction) {
+    const delta = direction === "left" ? -1 : 1;
     this.setState({
-      value: adjustedValue,
-      thumbnail: adjustedValue
+      value: this.state.value + delta
     });
   }
 
-  onClickArrow(delta) {
-    this.onChangeThumbnails(this.state.thumbnail + delta);
+  onClickThumbnail(value) {
+    this.carouselSlider.current.slickGoTo(value);
+    this.setState({
+      value
+    });
   }
 
-  getThumbnailIndex(centerThumbnailIndex, targetListIndex) {
-    // Convert index in list to a thumbnail index.
-    const centerListIndex = mod(
-      centerThumbnailIndex,
-      this.state.elements.length
-    );
-    var delta;
-    if (Math.abs(targetListIndex - centerListIndex) > 2) {
-      if (targetListIndex > centerListIndex) {
-        delta =
-          targetListIndex - (centerListIndex + this.state.elements.length);
-      } else {
-        delta = targetListIndex + this.state.elements.length - centerListIndex;
-      }
-      return centerThumbnailIndex + delta;
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleResize);
+  }
+
+  handleResize(event) {
+    this.setState({
+      showThumbnails:
+        window.innerWidth >= Constants.showThumbnailWidthThreshold &&
+        window.innerHeight >= Constants.showThumbnailHeightThreshold
+    });
+  }
+
+  onNext() {
+    if (this.state.showThumbnails) {
+      this.thumbnailSlider.current.slickNext();
+    } else {
+      this.carouselSlider.current.slickNext();
     }
-    delta = targetListIndex - centerListIndex;
-    return centerThumbnailIndex + delta;
+  }
+
+  onPrev() {
+    if (this.state.showThumbnails) {
+      this.thumbnailSlider.current.slickPrev();
+    } else {
+      this.carouselSlider.current.slickPrev();
+    }
   }
 
   render() {
-    const {
-      showThumbnails,
-      carouselWidth,
-      carouselImageHeight,
-      thumbnail,
-      elements,
-      value
-    } = this.state;
+    const { elements, initialValue, value, showThumbnails } = this.state;
+    const carouselSettings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      initialSlide: initialValue,
+      onSwipe: this.onChange,
+      arrows: false
+    };
+    const thumbnailSettings = {
+      dots: false,
+      infinite: true,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      initialSlide: initialValue,
+      arrows: false
+    };
+
     return (
-      <div className={styles.container} ref={this.carouselContainerElement}>
-        <ReactResizeDetector
-          handleWidth
-          handleHeight
-          onResize={this.onResize}
-        />
-        <div className={styles.cancelContainer}>
+      <div className={styles.container}>
+        <div
+          className={styles.cancelContainer}
+          style={{ height: Constants.cancelContainerHeight }}
+        >
           <Link to={"/" + this.state.source}>
             <Icon name="times" className={styles.cancelButton} />
           </Link>
         </div>
-        <div className={styles.carouselContainer}>
-          <ReactCarousel
-            infinite
-            centered
-            value={value}
-            onChange={this.onChangeCarousel}
-            itemWidth={carouselWidth}
-            slides={elements.map(({ primary, secondary, src }, i) => (
-              <div
-                key={i}
-                className={styles.carouselItem}
-                style={{
-                  height: carouselImageHeight,
-                  width: carouselWidth
-                }}
-              >
+        <div
+          className={ClassNames({ [styles.carousel]: true, carousel: true })}
+        >
+          <Slider {...carouselSettings} ref={this.carouselSlider}>
+            {elements.map(({ primary, secondary, src }, i) => (
+              <div key={i} className={styles.carouselItem}>
                 <div className={styles.carouselHeader}>
                   <div className={styles.carouselDescription}>
                     <div className={styles.carouselItemPrimary}>
@@ -197,53 +136,40 @@ class Carousel extends Component {
                 </div>
               </div>
             ))}
+          </Slider>
+        </div>
+        <div
+          className={ClassNames({ [styles.thumbnails]: true, thumbnail: true })}
+          style={{
+            height: showThumbnails
+              ? Constants.thumbnailFullContainerHeight
+              : Constants.thumbnailSmallContainerHeight
+          }}
+        >
+          <Icon
+            className={styles.arrow}
+            name="angle-left"
+            onClick={this.onPrev}
           />
-          <div
-            className={styles.thumbnailsContainer}
-            style={{ marginTop: kMargin }}
-          >
-            {showThumbnails ? (
-              <ReactCarousel
-                infinite
-                centered
-                arrowLeft={<Icon className={styles.arrow} name="angle-left" />}
-                arrowRight={
-                  <Icon className={styles.arrow} name="angle-right" />
-                }
-                addArrowClickHandler
-                className={styles.thumbnails}
-                value={showThumbnails ? thumbnail : value}
-                onChange={this.onChangeThumbnails}
-                slidesPerScroll={showThumbnails ? 3 : 1}
-                itemWidth={kThumbnailHeight}
-                slides={elements.map(({ src }, i) => (
+          {showThumbnails && (
+            <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
+              {elements.map(({ primary, secondary, src }, i) => (
+                <div key={i} className={styles.carouselItem}>
                   <Thumbnail
                     value={i}
                     src={"/" + src}
                     onClick={this.onClickThumbnail}
-                    selected={mod(value, this.state.thumbnails.length) === i}
+                    selected={value === i}
                   />
-                ))}
-              />
-            ) : (
-              <div className={styles.arrowsContainer}>
-                <Icon
-                  className={styles.arrow}
-                  name="angle-left"
-                  onClick={() => {
-                    this.onClickArrow(-1);
-                  }}
-                />
-                <Icon
-                  className={styles.arrow}
-                  name="angle-right"
-                  onClick={() => {
-                    this.onClickArrow(1);
-                  }}
-                />
-              </div>
-            )}
-          </div>
+                </div>
+              ))}
+            </Slider>
+          )}
+          <Icon
+            className={styles.arrow}
+            name="angle-right"
+            onClick={this.onNext}
+          />
         </div>
       </div>
     );
