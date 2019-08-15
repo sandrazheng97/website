@@ -17,12 +17,17 @@ class AboutPage extends Component {
         </div>
         <div className={styles.aboutDivider} />
         <div className={styles.info}>
-          <div className={styles.infoTitle}>INFO</div>
+          <div className={styles.infoTitle}>Hi There! </div>
           <div className={styles.infoBody}>
-            Sandra Zheng is a Canadian born illustrator and designer who
-            recently graduated from ArtCenter College of Design. She is based in
-            Vancouver, BC. Her illustrations usually depict nature with playful 
-            interactions of her own whimsical characters.
+            My name is Sandra. I am a Canadian Illustrator and Designer from Vancouver, BC. 
+            I recently graduated from ArtCenter College of Design with a BFA in Illustration. 
+            My art is primarily inspired by nature and 
+            animals that usually depict playful interactions of whimiscal characters in their
+            own colorful world.
+            
+            For jobs, commission enquiries, or simply to say hi: 
+            sandrazhengart@gmail.com
+           
           </div>
         </div>
       </div>
