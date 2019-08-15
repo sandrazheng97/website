@@ -23,7 +23,7 @@ class LazyLoadImage extends Component {
     const { src, imageStyles, imageClassName } = this.props;
     const { loadingIconHidden } = this.state;
     return (
-      <LazyLoad offsetVertical={1000}>
+      <LazyLoad offsetVertical={1500} debouce={false}>
         <div
           className={ClassNames("lds-default", {
             "lds-default-hidden": loadingIconHidden
