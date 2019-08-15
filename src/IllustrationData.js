@@ -1,5 +1,4 @@
-const elements = [
-    {
+const elements = [{
         primary: "Wander",
         secondary: "Digital",
         src: "images/wander.jpg",
@@ -33,41 +32,6 @@ const elements = [
         height: 4
     },
     {
-        primary: "Extinct Nature",
-        secondary: "Ink & Watercolor",
-        width: 3,
-        src: "images/whale.jpg",
-        srcMini: "images/whale_mini.jpg",
-        imageStyles: {
-            transform: "scale(1.5)",
-            transformOrigin: "40% 40%"
-        }
-    },
-    {
-        primary: "Mug Towers",
-        secondary: "Ink & Watercolor",
-        src: "images/towers.jpg",
-        srcMini: "images/towers_mini.jpg",
-        width: 3,
-        height: 2,
-        imageStyles: {
-            transform: "scale(1.1)",
-            transformOrigin: "40% 40%"
-        }
-    },
-    {
-        primary: "Egg-Plant",
-        secondary: "Digital",
-        src: "images/final_eggplant.jpg",
-        srcMini: "images/final_eggplant.jpg",
-        width: 3,
-        height: 2,
-        imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "40% 40%"
-        }
-    },
-    {
         primary: "VANCOUVER",
         secondary: "Digital",
         src: "images/finalmap.jpg",
@@ -91,6 +55,37 @@ const elements = [
         }
     },
     {
+        primary: "Extinct Nature",
+        secondary: "Ink & Watercolor",
+        width: 3,
+        src: "images/whale.jpg",
+        srcMini: "images/whale_mini.jpg",
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "40% 40%"
+        }
+    },
+    {
+        primary: "Mug Towers",
+        secondary: "Ink & Watercolor",
+        src: "images/towers.jpg",
+        srcMini: "images/towers_mini.jpg",
+        width: 3,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.1)",
+            transformOrigin: "40% 40%"
+        }
+    },
+    {
+        primary: "Sleeping Dogs",
+        secondary: "Silkscreen Print",
+        width: 3,
+        height: 2,
+        src: "images/sleeping_dog.jpg",
+        srcMini: "images/sleeping_dog_mini.jpg"
+    },
+    {
         primary: "Creature Comforts",
         secondary: "Pen, Watercolor, & Digital",
         width: 3,
@@ -100,6 +95,18 @@ const elements = [
         imageStyles: {
             transform: "scale(1.4)",
             transformOrigin: "15% 50%"
+        }
+    },
+    {
+        primary: "Egg-Plant",
+        secondary: "Digital",
+        src: "images/final_eggplant.jpg",
+        srcMini: "images/final_eggplant.jpg",
+        width: 3,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.3)",
+            transformOrigin: "40% 40%"
         }
     },
     {
@@ -126,14 +133,6 @@ const elements = [
             transformOrigin: "12% 35%"
         }
     },
-    {
-        primary: "Sleeping Dogs",
-        secondary: "Silkscreen Print",
-        width: 3,
-        height: 2,
-        src: "images/sleeping_dog.jpg",
-        srcMini: "images/sleeping_dog_mini.jpg"
-    }
 ];
 
 export default elements;
