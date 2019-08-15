@@ -41,6 +41,10 @@ class Header extends Component {
     });
   }
 
+  sendEmail() {
+    window.location = "mailto:" + Constants.email;
+  }
+
   handleScroll(event) {
     this.setState({ headerColor: window.scrollY > 20 ? "#ffe967" : "white" });
   }
@@ -156,11 +160,11 @@ class Header extends Component {
                 className={ClassNames(styles.socialItem, "fab", "fa-behance")}
               />
             </a>*/}
-            <a href={Constants.emailLink} rel="noopener noreferrer">
+            <div onClick={this.sendEmail}>
               <i
                 className={ClassNames(styles.socialItem, "far", "fa-envelope")}
               />
-            </a>
+            </div>
           </div>
         </div>
       );
