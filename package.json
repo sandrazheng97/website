@@ -9,6 +9,7 @@
     "react-dom": "^16.8.6",
     "react-fa": "^5.0.0",
     "react-lazyload": "^2.5.0",
+    "react-protected-mailto": "^1.0.3",
     "react-resize-detector": "^4.2.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",

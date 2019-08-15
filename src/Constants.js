@@ -13,7 +13,7 @@ const Constants = {
   linkedInLink: "https://www.linkedin.com/in/sandra-zheng-8909aa187/",
   instagramLink: "https://www.instagram.com/szheng__/",
   behanceLink: "https://www.behance.net/sandrazheng",
-  emailLink: "mailto:sandrazhengart@gmail.com"
+  email: "sandrazhengart@gmail.com"
 };
 
 export default Constants;
