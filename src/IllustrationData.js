@@ -2,6 +2,7 @@ const elements = [{
     primary: "Wander",
     secondary: "Digital",
     src: "images/wander.jpg",
+    srcMini: "images/wander_mini.jpg",
     width: 2,
     height: 2,
 }, {
