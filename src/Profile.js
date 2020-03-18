@@ -51,7 +51,7 @@ class Profile extends Component {
           handleHeight
           onResize={this.onResize}
         />
-
+        <div className={styles.placeHolder} />
         <div className={styles.mainContent}>
           <div
             className={styles.gallery}

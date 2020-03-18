@@ -5,7 +5,7 @@ const Constants = {
   thumbnailSmallContainerHeight: 50,
   cancelContainerHeight: 25,
   numColumns: 6,
-  columnSpacing: 10,
+  columnSpacing: 20,
   peach: "#f8a178",
   showThumbnailWidthThreshold: 600,
   showThumbnailHeightThreshold: 500,

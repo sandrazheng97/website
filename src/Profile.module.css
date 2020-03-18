@@ -1,15 +1,23 @@
 .profile {
+    padding-top: 80px;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
 }
 
+.placeHolder {
+    width: 300px;
+}
+
 .mainContent {
-    display: flex;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .gallery {
+    padding-right: 100px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 
