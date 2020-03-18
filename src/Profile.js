@@ -51,37 +51,40 @@ class Profile extends Component {
           handleHeight
           onResize={this.onResize}
         />
-        <div
-          className={styles.gallery}
-          style={{
-            gridAutoRows: this.state.gridHeight,
-            gridGap: Constants.columnSpacing
-          }}
-        >
-          {this.state.elements.map(
-            ({ height, srcMini, width, imageStyles }, i) => {
-              var style = {};
-              if (height) {
-                style.gridRowEnd = "span " + parseInt(height);
+
+        <div className={styles.mainContent}>
+          <div
+            className={styles.gallery}
+            style={{
+              gridAutoRows: this.state.gridHeight,
+              gridGap: Constants.columnSpacing
+            }}
+          >
+            {this.state.elements.map(
+              ({ height, srcMini, width, imageStyles }, i) => {
+                var style = {};
+                if (height) {
+                  style.gridRowEnd = "span " + parseInt(height);
+                }
+                if (width) {
+                  style.gridColumnEnd = "span " + parseInt(width);
+                }
+                return (
+                  <div key={i} className={styles.card} style={style}>
+                    <Link
+                      to={"/carousel" + this.state.source + "/" + parseInt(i)}
+                    >
+                      <LazyLoadImage src={srcMini} imageStyles={imageStyles} />
+                    </Link>
+                  </div>
+                );
               }
-              if (width) {
-                style.gridColumnEnd = "span " + parseInt(width);
-              }
-              return (
-                <div key={i} className={styles.card} style={style}>
-                  <Link
-                    to={"/carousel" + this.state.source + "/" + parseInt(i)}
-                  >
-                    <LazyLoadImage src={srcMini} imageStyles={imageStyles} />
-                  </Link>
-                </div>
-              );
-            }
-          )}
-        </div>
-        <div className={styles.footer} onClick={this.scrollToTop}>
-          <Icon className={styles.arrow} name="arrow-up" />
-          Back to Top
+            )}
+          </div>
+          <div className={styles.footer} onClick={this.scrollToTop}>
+            <Icon className={styles.arrow} name="arrow-up" />
+            Back to Top
+          </div>
         </div>
       </div>
     );

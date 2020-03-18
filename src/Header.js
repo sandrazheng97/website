@@ -104,53 +104,80 @@ class Header extends Component {
       );
     } else {
       headerContent = (
-        <div className={styles.largeHeader}>
-          <div className={ClassNames(styles.headerItem, styles.navigation)}>
-            <NavLink className={styles.link} to="/illustration">
-              ILLUSTRATION
-            </NavLink>
-            <NavLink className={styles.link} to="/design">
-              DESIGN
-            </NavLink>
-            <NavLink className={styles.link} to="/shop">
-              SHOP
-            </NavLink>
-            <NavLink className={styles.link} to="/about">
-              ABOUT
-            </NavLink>
-          </div>
-          <div className={ClassNames(styles.headerItem, styles.titleContainer)}>
+        <div className={styles.sideBar}>
+          <div>
             <LazyLoad>
               <img
-                className={styles.headerTitle}
+                className={styles.sideBarTitle}
                 alt={"name"}
                 src="/images/name.png"
               />
             </LazyLoad>
           </div>
-          <div className={ClassNames(styles.headerItem, styles.social)}>
-            <a
-              href={Constants.instagramLink}
-              rel="noopener noreferrer"
-              target="_blank"
+          <div style={{ paddingTop: 10 }}>
+            <span className={styles.blueText}>illustrator</span>{" "}
+            <span className={styles.pinkText}>&</span>{" "}
+            <span className={styles.blueText}>designer</span>
+          </div>
+          <div className={ClassNames(styles.navigation)}>
+            <NavLink
+              className={ClassNames(styles.pinkText, styles.link)}
+              style={{ paddingTop: 50 }}
+              to="/illustration"
             >
-              <i
-                className={ClassNames(styles.socialItem, "fab", "fa-instagram")}
-              />
-            </a>
-            <a
-              href={Constants.linkedInLink}
-              rel="noopener noreferrer"
-              target="_blank"
+              illustration
+            </NavLink>
+            <NavLink
+              className={ClassNames(styles.pinkText, styles.link)}
+              to="/design"
             >
-              <i
-                className={ClassNames(
-                  styles.socialItem,
-                  "fab",
-                  "fa-linkedin-in"
-                )}
-              />
-            </a>
+              design
+            </NavLink>
+            <NavLink
+              className={ClassNames(styles.blueText, styles.link)}
+              style={{ paddingTop: 50 }}
+              to="/shop"
+            >
+              shop
+            </NavLink>
+            <NavLink
+              className={ClassNames(styles.pinkText, styles.link)}
+              to="/about"
+            >
+              about
+            </NavLink>
+          </div>
+          <div className={ClassNames(styles.social)}>
+            <div>
+              <a
+                href={Constants.instagramLink}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className={ClassNames(
+                    styles.socialItem,
+                    "fab",
+                    "fa-instagram"
+                  )}
+                />
+              </a>
+            </div>
+            <div>
+              <a
+                href={Constants.linkedInLink}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className={ClassNames(
+                    styles.socialItem,
+                    "fab",
+                    "fa-linkedin-in"
+                  )}
+                />
+              </a>
+            </div>
             {/*<a
               href={Constants.behanceLink}
               rel="noopener noreferrer"
@@ -170,14 +197,7 @@ class Header extends Component {
       );
     }
 
-    return (
-      <div className={styles.headerContainer}>
-        <div className={styles.header} style={{ backgroundColor: headerColor }}>
-          {headerContent}
-        </div>
-        <div className={styles.placeholder} />
-      </div>
-    );
+    return headerContent;
   }
 }
 
