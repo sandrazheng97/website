@@ -1,41 +1,41 @@
 .profile {
-  width: 100%;
+    width: 100%;
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
 
-  /* To by dynamically set*/
-  grid-auto-rows: 90px;
+    /* To by dynamically set*/
+    grid-auto-rows: 90px;
 }
 
 .card {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid;
-  grid-column-end: span 2;
-  grid-row-end: span 2;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 1px solid;*/
+    grid-column-end: span 2;
+    grid-row-end: span 2;
 }
 
 .card img {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .arrow {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .footer {
-  display: flex;
-  width: 100%;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
