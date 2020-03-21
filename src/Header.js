@@ -57,49 +57,54 @@ class Header extends Component {
     const { headerColor, width } = this.state;
 
     var headerContent;
-    if (width < 1000) {
+    if (width < Constants.mobileViewMaxWidth) {
       headerContent = (
-        <div className={styles.miniHeader}>
-          <Dropdown className={styles.dropdown} ref={this.dropdown}>
-            <DropdownTrigger>
-              <div className={ClassNames(styles.menuButton, styles.link)}>
-                MENU
-              </div>
-            </DropdownTrigger>
-            <DropdownContent
-              className={styles.dropdownContent}
-              onClick={this.onClickDropdownItem}
-              style={{ borderBottom: "2px solid " + Constants.peach }}
-            >
-              <div className={styles.menuItem}>
-                <NavLink className={styles.link} to="/illustration">
-                  ILLUSTRATION
-                </NavLink>
-              </div>
-              <div className={styles.menuItem}>
-                <NavLink className={styles.link} to="/design">
-                  DESIGN
-                </NavLink>
-              </div>
-              <div className={styles.menuItem}>
-                <NavLink className={styles.link} to="/shop">
-                  SHOP
-                </NavLink>
-              </div>
-              <div className={styles.menuItem}>
-                <NavLink className={styles.link} to="/about">
-                  ABOUT
-                </NavLink>
-              </div>
-            </DropdownContent>
-          </Dropdown>
-          <LazyLoad>
-            <img
-              className={styles.miniHeaderTitle}
-              alt={"name"}
-              src="/images/name.png"
-            />
-          </LazyLoad>
+        <div
+          className={styles.topHeader}
+          style={{ height: Constants.headerHeight }}
+        >
+          <div className={styles.miniHeader}>
+            <Dropdown className={styles.dropdown} ref={this.dropdown}>
+              <DropdownTrigger>
+                <div className={ClassNames(styles.menuButton, styles.link)}>
+                  menu
+                </div>
+              </DropdownTrigger>
+              <DropdownContent
+                className={styles.dropdownContent}
+                onClick={this.onClickDropdownItem}
+                style={{ borderBottom: "2px solid " + Constants.peach }}
+              >
+                <div className={styles.menuItem}>
+                  <NavLink className={styles.link} to="/illustration">
+                    illustration
+                  </NavLink>
+                </div>
+                <div className={styles.menuItem}>
+                  <NavLink className={styles.link} to="/design">
+                    design
+                  </NavLink>
+                </div>
+                <div className={styles.menuItem}>
+                  <NavLink className={styles.link} to="/shop">
+                    shop
+                  </NavLink>
+                </div>
+                <div className={styles.menuItem}>
+                  <NavLink className={styles.link} to="/about">
+                    about
+                  </NavLink>
+                </div>
+              </DropdownContent>
+            </Dropdown>
+            <LazyLoad>
+              <img
+                className={styles.miniHeaderTitle}
+                alt={"name"}
+                src="/images/name.png"
+              />
+            </LazyLoad>
+          </div>
         </div>
       );
     } else {

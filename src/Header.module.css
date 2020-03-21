@@ -31,7 +31,11 @@
 }
 
 .link {
-  margin-top: 10px;
+  color: var(--blue);
+}
+
+.link:hover {
+  color: var(--peach);
 }
 
 a.blueText:hover {
@@ -62,6 +66,16 @@ a.pinkText:hover {
 
 .socialItem:hover {
   color: var(--peach);
+}
+
+/* Mobile CSS */
+
+.topHeader {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 .miniHeader {

@@ -35,7 +35,8 @@ class Profile extends Component {
 
   onResize() {
     this.setState({
-      gridHeight: this.getGridHeight()
+      gridHeight: this.getGridHeight(),
+      windowWidth: window.innerWidth
     });
   }
 
@@ -44,20 +45,32 @@ class Profile extends Component {
   }
 
   render() {
+    const isMobile = this.state.windowWidth <= Constants.mobileViewMaxWidth;
+    const placeHolderStyle = isMobile
+      ? { height: Constants.headerHeight, width: "100%" }
+      : { width: Constants.sideBarWidth };
     return (
-      <div ref={this.profileElement} className={styles.profile}>
+      <div
+        ref={this.profileElement}
+        className={styles.profile}
+        style={{
+          paddingTop: isMobile ? 0 : 80,
+          flexDirection: isMobile ? "column" : "row"
+        }}
+      >
         <ReactResizeDetector
           handleWidth
           handleHeight
           onResize={this.onResize}
         />
-        <div className={styles.placeHolder} />
+        <div className={styles.placeHolder} style={placeHolderStyle} />
         <div className={styles.mainContent}>
           <div
             className={styles.gallery}
             style={{
               gridAutoRows: this.state.gridHeight,
-              gridGap: Constants.columnSpacing
+              gridGap: Constants.columnSpacing,
+              paddingLeft: isMobile ? 100 : 0
             }}
           >
             {this.state.elements.map(

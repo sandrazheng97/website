@@ -1,13 +1,10 @@
 .profile {
-    padding-top: 80px;
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: row;
 }
 
 .placeHolder {
-    width: 300px;
 }
 
 .mainContent {

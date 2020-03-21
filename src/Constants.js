@@ -1,4 +1,6 @@
 const Constants = {
+  mobileViewMaxWidth: 1000,
+  sideBarWidth: 300,
   headerHeight: 120,
   copyrightHeight: 60,
   thumbnailFullContainerHeight: 150,
