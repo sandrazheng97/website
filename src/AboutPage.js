@@ -22,7 +22,7 @@ class AboutPage extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   }
 
   handleResize(event) {

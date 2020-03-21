@@ -59,15 +59,14 @@ class Carousel extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   }
 
   handleResize(event) {
     this.setState({
       showThumbnails:
         window.innerWidth >= Constants.showThumbnailWidthThreshold &&
-        window.innerHeight >= Constants.showThumbnailHeightThreshold,
-      windowWidth: window.innerWidth
+        window.innerHeight >= Constants.showThumbnailHeightThreshold
     });
   }
 
@@ -88,13 +87,7 @@ class Carousel extends Component {
   }
 
   render() {
-    const {
-      elements,
-      initialValue,
-      value,
-      showThumbnails,
-      innerWidth
-    } = this.state;
+    const { elements, initialValue, value, showThumbnails } = this.state;
     const carouselSettings = {
       dots: false,
       infinite: true,
@@ -112,15 +105,9 @@ class Carousel extends Component {
       initialSlide: initialValue,
       arrows: false
     };
-    const isMobile = this.state.windowWidth <= Constants.mobileViewMaxWidth;
 
     return (
       <div className={styles.container}>
-        <div
-          className={styles.placeHolder}
-          style={{ width: isMobile ? 0 : Constants.sideBarWidth }}
-        />
-
         <div className={styles.mainContent}>
           <div
             className={styles.cancelContainer}

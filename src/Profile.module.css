@@ -14,7 +14,6 @@
 }
 
 .gallery {
-    padding-right: 100px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 

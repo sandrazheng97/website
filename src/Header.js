@@ -13,31 +13,25 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerColor: "white",
-      width: window.innerWidth,
-      height: window.innerHeight
+      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
     };
 
     this.dropdown = React.createRef();
-    this.handleScroll = this.handleScroll.bind(this);
     this.handleResize = this.handleResize.bind(this);
     this.onClickDropdownItem = this.onClickDropdownItem.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("resize", this.handleResize);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-    window.removeEventListener("scroll", this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   }
 
   handleResize(event) {
     this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight
+      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
     });
   }
 
@@ -45,19 +39,15 @@ class Header extends Component {
     window.location = "mailto:" + Constants.email;
   }
 
-  handleScroll(event) {
-    this.setState({ headerColor: window.scrollY > 20 ? "#ffe967" : "white" });
-  }
-
   onClickDropdownItem(event) {
     this.dropdown.current.hide();
   }
 
   render() {
-    const { headerColor, width } = this.state;
+    const { isMobile } = this.state;
 
     var headerContent;
-    if (width < Constants.mobileViewMaxWidth) {
+    if (isMobile) {
       headerContent = (
         <div
           className={styles.topHeader}
@@ -126,27 +116,27 @@ class Header extends Component {
           </div>
           <div className={ClassNames(styles.navigation)}>
             <NavLink
-              className={ClassNames(styles.pinkText, styles.link)}
+              className={ClassNames(styles.pinkText, styles.sideBarLink)}
               style={{ paddingTop: 50 }}
               to="/illustration"
             >
               illustration
             </NavLink>
             <NavLink
-              className={ClassNames(styles.pinkText, styles.link)}
+              className={ClassNames(styles.pinkText, styles.sideBarLink)}
               to="/design"
             >
               design
             </NavLink>
             <NavLink
-              className={ClassNames(styles.blueText, styles.link)}
+              className={ClassNames(styles.blueText, styles.sideBarLink)}
               style={{ paddingTop: 50 }}
               to="/shop"
             >
               shop
             </NavLink>
             <NavLink
-              className={ClassNames(styles.pinkText, styles.link)}
+              className={ClassNames(styles.pinkText, styles.sideBarLink)}
               to="/about"
             >
               about

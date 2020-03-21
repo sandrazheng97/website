@@ -19,7 +19,8 @@ class Profile extends Component {
 
     this.state = {
       source,
-      elements
+      elements,
+      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
     };
     this.onResize = this.onResize.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
@@ -36,7 +37,7 @@ class Profile extends Component {
   onResize() {
     this.setState({
       gridHeight: this.getGridHeight(),
-      windowWidth: window.innerWidth
+      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
     });
   }
 
@@ -45,16 +46,12 @@ class Profile extends Component {
   }
 
   render() {
-    const isMobile = this.state.windowWidth <= Constants.mobileViewMaxWidth;
-    const placeHolderStyle = isMobile
-      ? { height: Constants.headerHeight, width: "100%" }
-      : { width: Constants.sideBarWidth };
+    const { isMobile } = this.state;
     return (
       <div
         ref={this.profileElement}
         className={styles.profile}
         style={{
-          paddingTop: isMobile ? 0 : 80,
           flexDirection: isMobile ? "column" : "row"
         }}
       >
@@ -63,14 +60,14 @@ class Profile extends Component {
           handleHeight
           onResize={this.onResize}
         />
-        <div className={styles.placeHolder} style={placeHolderStyle} />
         <div className={styles.mainContent}>
           <div
             className={styles.gallery}
             style={{
               gridAutoRows: this.state.gridHeight,
               gridGap: Constants.columnSpacing,
-              paddingLeft: isMobile ? 100 : 0
+              paddingLeft: isMobile ? 50 : 0,
+              paddingRight: isMobile ? 50 : 100
             }}
           >
             {this.state.elements.map(

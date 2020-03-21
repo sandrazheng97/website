@@ -30,12 +30,8 @@
   flex-direction: column;
 }
 
-.link {
-  color: var(--blue);
-}
-
-.link:hover {
-  color: var(--peach);
+.sideBarLink {
+  padding-top: 10px;
 }
 
 a.blueText:hover {
@@ -115,6 +111,15 @@ a.pinkText:hover {
   height: 50px;
   text-align: center;
 }
+
 .menuItem a {
   line-height: 50px;
+}
+
+.link {
+  color: var(--blue);
+}
+
+.link:hover {
+  color: var(--peach);
 }
