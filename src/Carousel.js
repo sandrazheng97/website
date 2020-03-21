@@ -108,69 +108,76 @@ class Carousel extends Component {
 
     return (
       <div className={styles.container}>
-        <div
-          className={styles.cancelContainer}
-          style={{ height: Constants.cancelContainerHeight }}
-        >
-          <Link to={"/" + this.state.source}>
-            <Icon name="times" className={styles.cancelButton} />
-          </Link>
-        </div>
-        <div
-          className={ClassNames({ [styles.carousel]: true, carousel: true })}
-        >
-          <Slider {...carouselSettings} ref={this.carouselSlider}>
-            {elements.map(({ primary, secondary, src }, i) => (
-              <div key={i} className={styles.carouselItem}>
-                <div className={styles.carouselHeader}>
-                  <div className={styles.carouselDescription}>
-                    <div className={styles.carouselItemPrimary}>
-                      {primary || "Primary text"}
-                    </div>
-                    <div className={styles.carouselItemSecondary}>
-                      {secondary || "Secondary text"}
+        <div className={styles.placeHolder} />
+
+        <div className={styles.mainContent}>
+          <div
+            className={styles.cancelContainer}
+            style={{ height: Constants.cancelContainerHeight }}
+          >
+            <Link to={"/" + this.state.source}>
+              <Icon name="times" className={styles.cancelButton} />
+            </Link>
+          </div>
+          <div
+            className={ClassNames({ [styles.carousel]: true, carousel: true })}
+          >
+            <Slider {...carouselSettings} ref={this.carouselSlider}>
+              {elements.map(({ primary, secondary, src }, i) => (
+                <div key={i} className={styles.carouselItem}>
+                  <div className={styles.carouselHeader}>
+                    <div className={styles.carouselDescription}>
+                      <div className={styles.carouselItemPrimary}>
+                        {primary || "Primary text"}
+                      </div>
+                      <div className={styles.carouselItemSecondary}>
+                        {secondary || "Secondary text"}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className={styles.carouselItemImage}>
-                  <img alt={src} src={"/" + src} />
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-        <div
-          className={ClassNames({ [styles.thumbnails]: true, thumbnail: true })}
-          style={{
-            height: showThumbnails
-              ? Constants.thumbnailFullContainerHeight
-              : Constants.thumbnailSmallContainerHeight
-          }}
-        >
-          <Icon
-            className={styles.arrow}
-            name="angle-left"
-            onClick={this.onPrev}
-          />
-          {showThumbnails && (
-            <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
-              {elements.map(({ primary, secondary, srcMini }, i) => (
-                <div key={i} className={styles.carouselItem}>
-                  <Thumbnail
-                    value={i}
-                    src={"/" + srcMini}
-                    onClick={this.onClickThumbnail}
-                    selected={value === i}
-                  />
+                  <div className={styles.carouselItemImage}>
+                    <img alt={src} src={"/" + src} />
+                  </div>
                 </div>
               ))}
             </Slider>
-          )}
-          <Icon
-            className={styles.arrow}
-            name="angle-right"
-            onClick={this.onNext}
-          />
+          </div>
+          <div
+            className={ClassNames({
+              [styles.thumbnails]: true,
+              thumbnail: true
+            })}
+            style={{
+              height: showThumbnails
+                ? Constants.thumbnailFullContainerHeight
+                : Constants.thumbnailSmallContainerHeight
+            }}
+          >
+            <Icon
+              className={styles.arrow}
+              name="angle-left"
+              onClick={this.onPrev}
+            />
+            {showThumbnails && (
+              <Slider {...thumbnailSettings} ref={this.thumbnailSlider}>
+                {elements.map(({ primary, secondary, srcMini }, i) => (
+                  <div key={i} className={styles.carouselItem}>
+                    <Thumbnail
+                      value={i}
+                      src={"/" + srcMini}
+                      onClick={this.onClickThumbnail}
+                      selected={value === i}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            )}
+            <Icon
+              className={styles.arrow}
+              name="angle-right"
+              onClick={this.onNext}
+            />
+          </div>
         </div>
       </div>
     );

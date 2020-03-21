@@ -16,5 +16,5 @@
 }
 
 .thumbnailSelected {
-  border-color: black !important;
+  border-color: var(--blue) !important;
 }

@@ -3,7 +3,7 @@ const Constants = {
   copyrightHeight: 60,
   thumbnailFullContainerHeight: 150,
   thumbnailSmallContainerHeight: 50,
-  cancelContainerHeight: 25,
+  cancelContainerHeight: 50,
   numColumns: 6,
   columnSpacing: 20,
   peach: "#f8a178",
