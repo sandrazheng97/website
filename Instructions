@@ -2,6 +2,9 @@ To run site locally
 1. Open Terminal
 2. cd ~/website
 3. npm start
+4. Click File > Open Recent > "~/website"
+5. Look under "src" folder for IllustrationData.js and DesignData.js
+6.Cmd + S = save
 
 
 To upload change

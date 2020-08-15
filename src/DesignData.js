@@ -1,5 +1,4 @@
-const elements = [
-    {
+const elements = [{
         primary: "Floral",
         secondary: "Mural Design",
         src: "images/sweet_compound.jpg",
@@ -108,6 +107,42 @@ const elements = [
         }
     },
     {
+        primary: "I PUG YOU",
+        secondary: "Soft Enamel Pin",
+        src: "images/holding_pin.jpg",
+        srcMini: "images/holding_pin.jpg",
+        width: 2,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.3)",
+            transformOrigin: "60% 60%"
+        }
+    },
+    {
+        primary: "I PUG YOU",
+        secondary: "Soft Enamel Pin",
+        src: "images/pin_plants.jpg",
+        srcMini: "images/pin_plants.jpg",
+        width: 2,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.1)",
+            transformOrigin: "50% 50%"
+        }
+    },
+    {
+        primary: "I PUG YOU",
+        secondary: "Soft Enamel Pin",
+        src: "images/pin_on_model.jpg",
+        srcMini: "images/pin_on_model.jpg",
+        width: 2,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.1)",
+            transformOrigin: "50% 50%"
+        }
+    },
+    {
         primary: "Lavender Berry",
         secondary: "Chocolate Flavored Powder Packaging",
         src: "images/lavender_berry.jpg",
@@ -124,6 +159,30 @@ const elements = [
         secondary: "Chocolate Flavored Powder Packaging",
         src: "images/primrose_lemon.jpg",
         srcMini: "images/primrose_lemon_mini.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.6)",
+            transformOrigin: "50% 50%"
+        }
+    },
+    {
+        primary: "Egg Plants",
+        secondary: "Plant clippings kit.",
+        src: "images/suc_kit_closed.jpg",
+        srcMini: "images/suc_kit_closed.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1)",
+            transformOrigin: "40% 60%"
+        }
+    },
+    {
+        primary: "Egg Plants",
+        secondary: "Plant clippings kit.",
+        src: "images/suc_kit_wide.jpg",
+        srcMini: "images/suc_kit_wide.jpg",
         width: 3,
         height: 3,
         imageStyles: {

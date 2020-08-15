@@ -6,40 +6,42 @@ import styles from "./AboutPage.module.css";
 import Constants from "./Constants.js";
 
 class AboutPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-      isAboutPage: props.match.path === "/about"
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            isAboutPage: props.match.path === "/about"
+        };
 
-    this.handleResize = this.handleResize.bind(this);
-  }
+        this.handleResize = this.handleResize.bind(this);
+    }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
-  }
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+    }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize);
-  }
 
-  handleResize(event) {
-    this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-  }
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
 
-  render() {
-    const { width, isAboutPage } = this.state;
-    const image = "/images/sleeping_village.jpg";
-    const showHorizontal = width >= 600;
-    var infoContent;
-    if (isAboutPage) {
-      infoContent = (
-        <div
+
+    handleResize(event) {
+        this.setState({
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+    }
+
+    render() {
+        const { width, isAboutPage } = this.state;
+        const image = "/images/sleeping_village.jpg";
+        const showHorizontal = width >= 600;
+        var infoContent;
+        if (isAboutPage) {
+            infoContent = (
+                <div
           className={ClassNames({
             [styles.info]: true,
             [styles.infoHorizontal]: showHorizontal
@@ -50,7 +52,7 @@ class AboutPage extends Component {
             My name is Sandra. I am a Canadian Illustrator and Designer from
             Vancouver, BC. I recently graduated from ArtCenter College of Design
             with a BFA in Illustration. My art is primarily inspired by nature
-            and animals that usually depict playful interactions of whimiscal
+            and animals that usually depict playful interactions of whimsical
             characters in their own colorful world.
           </div>
           <div className={styles.infoBody}>
@@ -63,10 +65,10 @@ class AboutPage extends Component {
             </a>
           </div>
         </div>
-      );
-    } else {
-      infoContent = (
-        <div
+            );
+        } else {
+            infoContent = (
+                <div
           className={ClassNames({
             [styles.info]: true,
             [styles.infoHorizontal]: showHorizontal
@@ -78,11 +80,11 @@ class AboutPage extends Component {
             <p>Please check back soon.</p>
           </div>
         </div>
-      );
-    }
+            );
+        }
 
-    return (
-      <div
+        return (
+            <div
         className={ClassNames({
           [styles.container]: true,
           [styles.containerVertical]: !showHorizontal
@@ -97,8 +99,8 @@ class AboutPage extends Component {
         />
         {infoContent}
       </div>
-    );
-  }
+        );
+    }
 }
 
 export default AboutPage;

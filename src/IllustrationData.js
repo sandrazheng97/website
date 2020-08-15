@@ -23,12 +23,32 @@ const elements = [{
         height: 2
     },
     {
+        primary: "Fish",
+        secondary: "Posca Markers & Pen",
+        src: "images/fish_shapes.jpg",
+        srcMini: "images/fish_shapes.jpg",
+        width: 3,
+        height: 3
+
+    },
+    {
+        primary: "Vases",
+        secondary: "Posaca Markers & Coloured Pencils",
+        src: "images/vases.jpg",
+        srcMini: "images/vases.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.2)",
+            transformOrigin: "20% 25%"
+        }
+    },
+    {
         primary: "Radio Snake",
         secondary: "Watercolor",
         src: "images/radio_snake.jpg",
         srcMini: "images/radio_snake_mini.jpg",
         width: 3,
-
         height: 4
     },
     {
