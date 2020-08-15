@@ -23,27 +23,6 @@ const elements = [{
         height: 2
     },
     {
-        primary: "Fish",
-        secondary: "Posca Markers & Pen",
-        src: "images/fish_shapes.jpg",
-        srcMini: "images/fish_shapes.jpg",
-        width: 3,
-        height: 3
-
-    },
-    {
-        primary: "Vases",
-        secondary: "Posaca Markers & Coloured Pencils",
-        src: "images/vases.jpg",
-        srcMini: "images/vases.jpg",
-        width: 3,
-        height: 3,
-        imageStyles: {
-            transform: "scale(1.2)",
-            transformOrigin: "20% 25%"
-        }
-    },
-    {
         primary: "Radio Snake",
         secondary: "Watercolor",
         src: "images/radio_snake.jpg",
@@ -81,7 +60,7 @@ const elements = [{
         src: "images/whale.jpg",
         srcMini: "images/whale_mini.jpg",
         imageStyles: {
-            transform: "scale(1.4)",
+            transform: "scale(1.9)",
             transformOrigin: "40% 40%"
         }
     },
@@ -93,28 +72,44 @@ const elements = [{
         width: 3,
         height: 2,
         imageStyles: {
-            transform: "scale(1.1)",
+            transform: "scale(1.7)",
             transformOrigin: "40% 40%"
+        }
+    },
+    {
+        primary: "Just Keep Swimming",
+        secondary: "Digital",
+        src: "images/ocean_fish.JPG",
+        srcMini: "images/ocean_fish.JPG",
+        width: 3,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.7)",
+            transformOrigin: "70% 110%"
         }
     },
     {
         primary: "Sleeping Dogs",
         secondary: "Silkscreen Print",
-        width: 3,
-        height: 2,
         src: "images/sleeping_dog.jpg",
-        srcMini: "images/sleeping_dog_mini.jpg"
+        srcMini: "images/sleeping_dog.jpg",
+        width: 6,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.2)",
+            transformOrigin: "50% -20%"
+        }
     },
     {
         primary: "Creature Comforts",
         secondary: "Pen, Watercolor, & Digital",
         width: 3,
-        height: 6,
+        height: 4,
         src: "images/creature_comforts.jpg",
         srcMini: "images/creature_comforts_mini.jpg",
         imageStyles: {
-            transform: "scale(1.4)",
-            transformOrigin: "15% 50%"
+            transform: "scale(1.5",
+            transformOrigin: "15% 10%"
         }
     },
     {
@@ -125,8 +120,8 @@ const elements = [{
         width: 3,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "40% 40%"
+            transform: "scale(1.6)",
+            transformOrigin: "60% 40%"
         }
     },
     {
@@ -137,8 +132,8 @@ const elements = [{
         src: "images/twoshootings.jpg",
         srcMini: "images/twoshootings_mini.jpg",
         imageStyles: {
-            transform: "scale(1.0)",
-            transformOrigin: "30% 70%"
+            transform: "scale(1.8)",
+            transformOrigin: "30% 50%"
         }
     },
     {

@@ -6,7 +6,7 @@ const elements = [{
         width: 6,
         height: 3,
         imageStyles: {
-            transform: "scale(1.2)",
+            transform: "scale(1.5)",
             transformOrigin: "40% 35%"
         }
     },
@@ -18,7 +18,7 @@ const elements = [{
         width: 2,
         height: 3,
         imageStyles: {
-            transform: "scale(1.4)",
+            transform: "scale(1.5)",
             transformOrigin: "40% 35%"
         }
     },
@@ -30,7 +30,7 @@ const elements = [{
         width: 4,
         height: 3,
         imageStyles: {
-            transform: "scale(1.2)",
+            transform: "scale(1.5)",
             transformOrigin: "12% 35%"
         }
     },
@@ -42,8 +42,8 @@ const elements = [{
         width: 6,
         height: 3,
         imageStyles: {
-            transform: "scale(1.4)",
-            transformOrigin: "30% 35%"
+            transform: "scale(1.6)",
+            transformOrigin: "40% 35%"
         }
     },
     {
@@ -54,7 +54,7 @@ const elements = [{
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1.6)",
+            transform: "scale(1.9)",
             transformOrigin: "40% 40%"
         }
     },
@@ -66,7 +66,7 @@ const elements = [{
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1.6)",
+            transform: "scale(1.9)",
             transformOrigin: "40% 40%"
         }
     },
@@ -78,7 +78,7 @@ const elements = [{
         width: 6,
         height: 3,
         imageStyles: {
-            transform: "scale(1.5)",
+            transform: "scale(1.7)",
             transformOrigin: "30% 50%"
         }
     },
@@ -90,8 +90,8 @@ const elements = [{
         width: 2,
         height: 3,
         imageStyles: {
-            transform: "scale(1.8)",
-            transformOrigin: "30% 40%"
+            transform: "scale(2.6)",
+            transformOrigin: "45% 40%"
         }
     },
     {
@@ -112,10 +112,10 @@ const elements = [{
         src: "images/holding_pin.jpg",
         srcMini: "images/holding_pin.jpg",
         width: 2,
-        height: 3,
+        height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "60% 60%"
+            transform: "scale(1.6)",
+            transformOrigin: "70% 80%"
         }
     },
     {
@@ -124,22 +124,22 @@ const elements = [{
         src: "images/pin_plants.jpg",
         srcMini: "images/pin_plants.jpg",
         width: 2,
-        height: 3,
+        height: 2,
         imageStyles: {
-            transform: "scale(1.1)",
+            transform: "scale(1)",
             transformOrigin: "50% 50%"
         }
     },
     {
         primary: "I PUG YOU",
         secondary: "Soft Enamel Pin",
-        src: "images/pin_on_model.jpg",
-        srcMini: "images/pin_on_model.jpg",
+        src: "images/pin_on_model.JPG",
+        srcMini: "images/pin_on_model.JPG",
         width: 2,
-        height: 3,
+        height: 2,
         imageStyles: {
-            transform: "scale(1.1)",
-            transformOrigin: "50% 50%"
+            transform: "scale(1.3)",
+            transformOrigin: "15% 110%"
         }
     },
     {
@@ -150,8 +150,8 @@ const elements = [{
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1.6)",
-            transformOrigin: "50% 50%"
+            transform: "scale(1.8)",
+            transformOrigin: "50% 60%"
         }
     },
     {
@@ -162,8 +162,8 @@ const elements = [{
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1.6)",
-            transformOrigin: "50% 50%"
+            transform: "scale(1.8)",
+            transformOrigin: "50% 60%"
         }
     },
     {
@@ -174,7 +174,7 @@ const elements = [{
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1)",
+            transform: "scale(1.2)",
             transformOrigin: "40% 60%"
         }
     },

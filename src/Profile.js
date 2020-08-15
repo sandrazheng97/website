@@ -6,49 +6,51 @@ import ReactResizeDetector from "react-resize-detector";
 import LazyLoadImage from "./LazyLoadImage";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
+import SketchElements from "./SketchData";
 import Constants from "./Constants.js";
 import styles from "./Profile.module.css";
 
 class Profile extends Component {
-  constructor(props) {
-    super(props);
-    const source =
-      props.match.path !== "/" ? props.match.path : "/illustration";
-    var elements =
-      source === "/illustration" ? IllustrationElements : DesignElements;
+    constructor(props) {
+        super(props);
+        const source =
+            props.match.path !== "/" ? props.match.path : "/illustration";
+        var elements =
+            source === "/illustration" ? IllustrationElements : DesignElements;
+        elements = source === "/sketchbook" ? SketchElements : elements;
 
-    this.state = {
-      source,
-      elements,
-      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
-    };
-    this.onResize = this.onResize.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this);
-    this.profileElement = React.createRef();
-  }
+        this.state = {
+            source,
+            elements,
+            isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
+        };
+        this.onResize = this.onResize.bind(this);
+        this.scrollToTop = this.scrollToTop.bind(this);
+        this.profileElement = React.createRef();
+    }
 
-  getGridHeight() {
-    return Math.floor(
-      (this.profileElement.current.offsetWidth - Constants.columnSpacing * 2) /
-        Constants.numColumns
-    );
-  }
+    getGridHeight() {
+        return Math.floor(
+            (this.profileElement.current.offsetWidth - Constants.columnSpacing * 2) /
+            Constants.numColumns
+        );
+    }
 
-  onResize() {
-    this.setState({
-      gridHeight: this.getGridHeight(),
-      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
-    });
-  }
+    onResize() {
+        this.setState({
+            gridHeight: this.getGridHeight(),
+            isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
+        });
+    }
 
-  scrollToTop() {
-    window.scrollTo(0, 0);
-  }
+    scrollToTop() {
+        window.scrollTo(0, 0);
+    }
 
-  render() {
-    const { isMobile } = this.state;
-    return (
-      <div
+    render() {
+        const { isMobile } = this.state;
+        return (
+            <div
         ref={this.profileElement}
         className={styles.profile}
         style={{
@@ -97,8 +99,8 @@ class Profile extends Component {
           </div>
         </div>
       </div>
-    );
-  }
+        );
+    }
 }
 
 export default Profile;

@@ -9,105 +9,105 @@ import styles from "./Carousel.module.css";
 import "./Slider.css";
 import DesignElements from "./DesignData";
 import IllustrationElements from "./IllustrationData.js";
+import SketchElements from "./SketchData";
 import Constants from "./Constants.js";
 
 class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    const source = props.match.params.source;
-    var elements = source === "design" ? DesignElements : IllustrationElements;
+    constructor(props) {
+        super(props);
+        const source = props.match.params.source;
+        var elements = source === "design" ? DesignElements : IllustrationElements;
+        elements = source === "sketchbook" ? SketchElements : elements;
 
-    const selected = parseInt(props.match.params.index) || 0;
-    this.state = {
-      source,
-      value: selected,
-      initialValue: selected,
-      thumbnail: selected,
-      elements,
-      thumbnails: elements,
-      showThumbnails:
-        window.innerWidth >= Constants.showThumbnailWidthThreshold &&
-        window.innerHeight >= Constants.ShowThumbnailHeightThreshold
-    };
+        const selected = parseInt(props.match.params.index) || 0;
+        this.state = {
+            source,
+            value: selected,
+            initialValue: selected,
+            thumbnail: selected,
+            elements,
+            thumbnails: elements,
+            showThumbnails: window.innerWidth >= Constants.showThumbnailWidthThreshold &&
+                window.innerHeight >= Constants.ShowThumbnailHeightThreshold
+        };
 
-    this.carouselSlider = React.createRef();
-    this.thumbnailSlider = React.createRef();
-    this.onChange = this.onChange.bind(this);
-    this.onClickThumbnail = this.onClickThumbnail.bind(this);
-    this.onNext = this.onNext.bind(this);
-    this.onPrev = this.onPrev.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-  }
-
-  onChange(direction) {
-    const delta = direction === "left" ? -1 : 1;
-    this.setState({
-      value: this.state.value + delta
-    });
-  }
-
-  onClickThumbnail(value) {
-    this.carouselSlider.current.slickGoTo(value);
-    this.setState({
-      value
-    });
-  }
-
-  componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize);
-  }
-
-  handleResize(event) {
-    this.setState({
-      showThumbnails:
-        window.innerWidth >= Constants.showThumbnailWidthThreshold &&
-        window.innerHeight >= Constants.showThumbnailHeightThreshold
-    });
-  }
-
-  onNext() {
-    if (this.state.showThumbnails) {
-      this.thumbnailSlider.current.slickNext();
-    } else {
-      this.carouselSlider.current.slickNext();
+        this.carouselSlider = React.createRef();
+        this.thumbnailSlider = React.createRef();
+        this.onChange = this.onChange.bind(this);
+        this.onClickThumbnail = this.onClickThumbnail.bind(this);
+        this.onNext = this.onNext.bind(this);
+        this.onPrev = this.onPrev.bind(this);
+        this.handleResize = this.handleResize.bind(this);
     }
-  }
 
-  onPrev() {
-    if (this.state.showThumbnails) {
-      this.thumbnailSlider.current.slickPrev();
-    } else {
-      this.carouselSlider.current.slickPrev();
+    onChange(direction) {
+        const delta = direction === "left" ? -1 : 1;
+        this.setState({
+            value: this.state.value + delta
+        });
     }
-  }
 
-  render() {
-    const { elements, initialValue, value, showThumbnails } = this.state;
-    const carouselSettings = {
-      dots: false,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      initialSlide: initialValue,
-      onSwipe: this.onChange,
-      arrows: false
-    };
-    const thumbnailSettings = {
-      dots: false,
-      infinite: true,
-      slidesToShow: 5,
-      slidesToScroll: 5,
-      initialSlide: initialValue,
-      arrows: false
-    };
+    onClickThumbnail(value) {
+        this.carouselSlider.current.slickGoTo(value);
+        this.setState({
+            value
+        });
+    }
 
-    return (
-      <div className={styles.container}>
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
+
+    handleResize(event) {
+        this.setState({
+            showThumbnails: window.innerWidth >= Constants.showThumbnailWidthThreshold &&
+                window.innerHeight >= Constants.showThumbnailHeightThreshold
+        });
+    }
+
+    onNext() {
+        if (this.state.showThumbnails) {
+            this.thumbnailSlider.current.slickNext();
+        } else {
+            this.carouselSlider.current.slickNext();
+        }
+    }
+
+    onPrev() {
+        if (this.state.showThumbnails) {
+            this.thumbnailSlider.current.slickPrev();
+        } else {
+            this.carouselSlider.current.slickPrev();
+        }
+    }
+
+    render() {
+        const { elements, initialValue, value, showThumbnails } = this.state;
+        const carouselSettings = {
+            dots: false,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: initialValue,
+            onSwipe: this.onChange,
+            arrows: false
+        };
+        const thumbnailSettings = {
+            dots: false,
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            initialSlide: initialValue,
+            arrows: false
+        };
+
+        return (
+            <div className={styles.container}>
         <div className={styles.mainContent}>
           <div
             className={styles.cancelContainer}
@@ -178,8 +178,8 @@ class Carousel extends Component {
           </div>
         </div>
       </div>
-    );
-  }
+        );
+    }
 }
 
 export default Carousel;

@@ -10,46 +10,46 @@ import styles from "./Header.module.css";
 import "./Dropdown.css";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
+        };
 
-    this.dropdown = React.createRef();
-    this.handleResize = this.handleResize.bind(this);
-    this.onClickDropdownItem = this.onClickDropdownItem.bind(this);
-  }
+        this.dropdown = React.createRef();
+        this.handleResize = this.handleResize.bind(this);
+        this.onClickDropdownItem = this.onClickDropdownItem.bind(this);
+    }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
-  }
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+    }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize);
-  }
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
 
-  handleResize(event) {
-    this.setState({
-      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
-    });
-  }
+    handleResize(event) {
+        this.setState({
+            isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
+        });
+    }
 
-  sendEmail() {
-    window.location = "mailto:" + Constants.email;
-  }
+    sendEmail() {
+        window.location = "mailto:" + Constants.email;
+    }
 
-  onClickDropdownItem(event) {
-    this.dropdown.current.hide();
-  }
+    onClickDropdownItem(event) {
+        this.dropdown.current.hide();
+    }
 
-  render() {
-    const { isMobile } = this.state;
+    render() {
+        const { isMobile } = this.state;
 
-    var headerContent;
-    if (isMobile) {
-      headerContent = (
-        <div
+        var headerContent;
+        if (isMobile) {
+            headerContent = (
+                <div
           className={styles.topHeader}
           style={{ height: Constants.headerHeight }}
         >
@@ -76,6 +76,11 @@ class Header extends Component {
                   </NavLink>
                 </div>
                 <div className={styles.menuItem}>
+                  <NavLink className={styles.link} to="/sketchbook">
+                    sketchbook
+                  </NavLink>
+                </div>
+                <div className={styles.menuItem}>
                   <NavLink className={styles.link} to="/shop">
                     shop
                   </NavLink>
@@ -96,10 +101,10 @@ class Header extends Component {
             </LazyLoad>
           </div>
         </div>
-      );
-    } else {
-      headerContent = (
-        <div className={styles.sideBar}>
+            );
+        } else {
+            headerContent = (
+                <div className={styles.sideBar}>
           <div>
             <LazyLoad>
               <img
@@ -127,6 +132,12 @@ class Header extends Component {
               to="/design"
             >
               design
+            </NavLink>
+            <NavLink
+              className={ClassNames(styles.pinkText, styles.sideBarLink)}
+              to="/sketchbook"
+            >
+              sketchbook
             </NavLink>
             <NavLink
               className={ClassNames(styles.blueText, styles.sideBarLink)}
@@ -189,11 +200,11 @@ class Header extends Component {
             </div>
           </div>
         </div>
-      );
-    }
+            );
+        }
 
-    return headerContent;
-  }
+        return headerContent;
+    }
 }
 
 export default Header;
