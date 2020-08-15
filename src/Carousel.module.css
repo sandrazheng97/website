@@ -1,112 +1,112 @@
 .container {
-  width: 100%;
-  flex: 1;
-  background: white;
-  display: flex;
-  flex-direction: row;
+    width: 100%;
+    flex: 1;
+    background: white;
+    display: flex;
+    flex-direction: row;
 }
 
-.placeHolder {
-}
+.placeHolder {}
 
 .mainContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .carousel {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 }
 
 .cancelContainer {
-  text-align: right;
-  font-size: 30px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 20px;
+    text-align: right;
+    font-size: 30px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    z-index: 1;
 }
 
 .cancelButton {
-  color: var(--blue);
+    margin-top: 15px;
+    color: var(--blue);
 }
 
 .cancelButton:hover {
-  color: var(--peach);
+    color: var(--peach);
 }
 
 .carouselItem {
-  display: flex !important;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .carouselHeader {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .carouselDescription {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carouselItemImage {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
-  height: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    height: 0;
 }
 
 .carouselItemImage img {
-  flex: 1;
-  object-fit: contain;
-  max-width: 100%;
-  max-height: 100%;
-  /*width: 100%;*/
+    flex: 1;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    /*width: 100%;*/
 }
 
 .carouselItemPrimary {
-  color: var(--blue);
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 5px;
+    color: var(--blue);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .carouselItemSecondary {
-  color: var(--blue);
-  font-size: 12px;
-  margin-bottom: 10px;
+    color: var(--blue);
+    font-size: 12px;
+    margin-bottom: 10px;
 }
 
 .arrow {
-  font-size: 40px;
-  width: 50px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue);
+    font-size: 40px;
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
 }
 
 .thumbnails {
-  margin-top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .arrow:hover {
-  color: var(--peach);
-  cursor: pointer;
+    color: var(--peach);
+    cursor: pointer;
 }
