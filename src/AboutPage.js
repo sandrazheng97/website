@@ -6,45 +6,43 @@ import styles from "./AboutPage.module.css";
 import Constants from "./Constants.js";
 
 class AboutPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            width: window.innerWidth,
-            height: window.innerHeight,
-            isAboutPage: props.match.path === "/about"
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      isAboutPage: props.match.path === "/about",
+    };
 
-        this.handleResize = this.handleResize.bind(this);
-    }
+    this.handleResize = this.handleResize.bind(this);
+  }
 
-    componentDidMount() {
-        window.addEventListener("resize", this.handleResize);
-    }
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.handleResize);
-    }
+  handleResize(event) {
+    this.setState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  }
 
-
-    handleResize(event) {
-        this.setState({
-            width: window.innerWidth,
-            height: window.innerHeight
-        });
-    }
-
-    render() {
-        const { width, isAboutPage } = this.state;
-        const image = "/images/sleeping_village.jpg";
-        const showHorizontal = width >= 600;
-        var infoContent;
-        if (isAboutPage) {
-            infoContent = (
-                <div
+  render() {
+    const { width, isAboutPage } = this.state;
+    const image = "/images/sleeping_village.jpg";
+    const showHorizontal = width >= 600;
+    var infoContent;
+    if (isAboutPage) {
+      infoContent = (
+        <div
           className={ClassNames({
             [styles.info]: true,
-            [styles.infoHorizontal]: showHorizontal
+            [styles.infoHorizontal]: showHorizontal,
           })}
         >
           <div className={styles.infoTitle}>Hi There! </div>
@@ -59,19 +57,14 @@ class AboutPage extends Component {
             <div>For jobs, commission enquiries, or simply to say hi:</div>
             <Mailto email={Constants.email} />
           </div>
-          <div className={styles.resume}>
-            <a href="/images/resume.pdf" target="_blank">
-              Resume
-            </a>
-          </div>
         </div>
-            );
-        } else {
-            infoContent = (
-                <div
+      );
+    } else {
+      infoContent = (
+        <div
           className={ClassNames({
             [styles.info]: true,
-            [styles.infoHorizontal]: showHorizontal
+            [styles.infoHorizontal]: showHorizontal,
           })}
         >
           <div className={styles.infoTitle}>SHOP</div>
@@ -80,27 +73,27 @@ class AboutPage extends Component {
             <p>Please check back soon.</p>
           </div>
         </div>
-            );
-        }
+      );
+    }
 
-        return (
-            <div
+    return (
+      <div
         className={ClassNames({
           [styles.container]: true,
-          [styles.containerVertical]: !showHorizontal
+          [styles.containerVertical]: !showHorizontal,
         })}
       >
         <div
           className={ClassNames({
             [styles.pictureContainer]: true,
-            [styles.pictureContainerHorizontal]: showHorizontal
+            [styles.pictureContainerHorizontal]: showHorizontal,
           })}
           style={{ backgroundImage: "url(" + image + ")" }}
         />
         {infoContent}
       </div>
-        );
-    }
+    );
+  }
 }
 
 export default AboutPage;
