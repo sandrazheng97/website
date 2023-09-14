@@ -61,7 +61,7 @@ class App extends Component {
               className={styles.copyright}
               style={{ height: Constants.copyrightHeight }}
             >
-              Copyright © 2019-2020 Sandra Zheng
+              Copyright © 2023 Sandra Zheng
             </div>
           </div>
         </div>

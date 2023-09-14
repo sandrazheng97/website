@@ -1,13 +1,13 @@
 To run site locally
 1. Open Terminal
-2. cd ~/website
-3. npm start
+2. cd ~/Documents/website
+3. npm start. A Chrome link with url "localhost:3000" will open.
 4. Click File > Open Recent > "~/website"
 5. Look under "src" folder for IllustrationData.js and DesignData.js
-6.Cmd + S = save
+6. Cmd + S = save, and changes will immediately show up on localhost:3000
 
 
 To upload change
 1. Open Terminal
-2. cd ~/website
+2. cd ~/Documents/website
 3. npm run deploy

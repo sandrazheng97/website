@@ -1,4 +1,16 @@
 const elements = [{
+        primary: "Nature",
+        secondary: "Digital",
+        src: "images/nature_banner.jpg",
+        srcMini: "images/nature_banner.jpg",
+        width: 6,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.5)",
+            transformOrigin: "50% 50%"
+        }
+    },
+    {
         primary: "Wander",
         secondary: "Digital",
         src: "images/wander.jpg",
@@ -23,18 +35,82 @@ const elements = [{
         height: 2
     },
     {
-        primary: "Radio Snake",
-        secondary: "Watercolor",
-        src: "images/radio_snake.jpg",
-        srcMini: "images/radio_snake_mini.jpg",
+        primary: "Summer Frog",
+        secondary: "Digital",
+        src: "images/new_frog.jpg",
+        srcMini: "images/new_frog.jpg",
         width: 3,
-        height: 4
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.5)",
+            transformOrigin: "50% 50%"
+        }
+    },
+      {
+        primary: "Butterfly Match Box",
+        secondary: "Digital",
+        src: "images/butterfly_match.jpg",
+        srcMini: "images/butterfly_match.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "40% 40%"
+        }
+    },
+    {
+        primary: "Just Keep Swimming",
+        secondary: "Watercolor",
+        src: "images/purple_yellow_fish.jpg",
+        srcMini: "images/purple_yellow_fish.jpg",
+        width: 2,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "50% 50%"
+        }
+    },   
+    {
+        primary: "Just Keep Swimming",
+        secondary: "Watercolor",
+        src: "images/red_blue_fish.jpg",
+        srcMini: "images/red_blue_fish.jpg",
+        width: 2,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "50% 50%"
+        }
+    },
+    {
+        primary: "Just Keep Swimming",
+        secondary: "Watercolor",
+        src: "images/orange_green_fish.jpg",
+        srcMini: "images/orange_green_fish.jpg",
+        width: 2,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "50% 50%"
+        }
+    },
+    {
+        primary: "Turtle Family",
+        secondary: "Digital",
+        src: "images/turtle_family.jpg",
+        srcMini: "images/turtle_family.jpg",
+        width: 3,
+        height: 4,
+        imageStyles: {
+            transform: "scale(1.3)",
+            transformOrigin: "20% 50%"
+        }
     },
     {
         primary: "VANCOUVER",
         secondary: "Digital",
-        src: "images/finalmap.jpg",
-        srcMini: "images/finalmap_mini.jpg",
+        src: "images/new_map.png",
+        srcMini: "images/new_map.png",
         width: 3,
         height: 4,
         imageStyles: {
@@ -65,51 +141,63 @@ const elements = [{
         }
     },
     {
-        primary: "Mug Towers",
-        secondary: "Ink & Watercolor",
-        src: "images/towers.jpg",
-        srcMini: "images/towers_mini.jpg",
+        primary: "Skateboard",
+        secondary: "Digital",
+        src: "images/skateboard_duck.JPG",
+        srcMini: "images/skateboard_duck.JPG",
         width: 3,
-        height: 2,
+        height: 3,
         imageStyles: {
-            transform: "scale(1.7)",
+            transform: "scale(1.3)",
             transformOrigin: "40% 40%"
         }
     },
     {
-        primary: "Just Keep Swimming",
+        primary: "Cat Planters",
         secondary: "Digital",
-        src: "images/ocean_fish.JPG",
-        srcMini: "images/ocean_fish.JPG",
+        src: "images/cat_plants.jpg",
+        srcMini: "images/cat_plants.jpg",
         width: 3,
-        height: 2,
+        height: 3,
         imageStyles: {
-            transform: "scale(1.7)",
-            transformOrigin: "70% 110%"
+            transform: "scale(1.5)",
+            transformOrigin: "50% 30%"
         }
     },
     {
-        primary: "Sleeping Dogs",
-        secondary: "Silkscreen Print",
-        src: "images/sleeping_dog.jpg",
-        srcMini: "images/sleeping_dog.jpg",
-        width: 6,
-        height: 2,
+        primary: "Deep In Thought",
+        secondary: "Digital",
+        src: "images/tattoos.jpeg",
+        srcMini: "images/tattoos.jpeg",
+        width: 3,
+        height: 3,
         imageStyles: {
-            transform: "scale(1.2)",
-            transformOrigin: "50% -20%"
+            transform: "scale(1.3)",
+            transformOrigin: "50% 50%"
         }
     },
     {
-        primary: "Creature Comforts",
-        secondary: "Pen, Watercolor, & Digital",
+        primary: "Picnic",
+        secondary: "Digital",
+        src: "images/sandwiches.jpg",
+        srcMini: "images/sandwiches.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.3)",
+            transformOrigin: "50% 40%"
+        }
+    },
+    {
+        primary: "Turtle Vines",
+        secondary: "Digital",
         width: 3,
         height: 4,
-        src: "images/creature_comforts.jpg",
-        srcMini: "images/creature_comforts_mini.jpg",
+        src: "images/turtle_vines.png",
+        srcMini: "images/turtle_vines.png",
         imageStyles: {
             transform: "scale(1.5",
-            transformOrigin: "15% 10%"
+            transformOrigin: "40% 10%"
         }
     },
     {
@@ -132,20 +220,44 @@ const elements = [{
         src: "images/twoshootings.jpg",
         srcMini: "images/twoshootings_mini.jpg",
         imageStyles: {
-            transform: "scale(1.8)",
+            transform: "scale(1.6)",
             transformOrigin: "30% 50%"
         }
     },
     {
-        primary: "Musical Quintet",
-        secondary: "Ink & Digital",
-        width: 3,
+        primary: "Sleeping Dogs",
+        secondary: "Silkscreen Print",
+        src: "images/sleeping_dog.jpg",
+        srcMini: "images/sleeping_dog.jpg",
+        width: 6,
         height: 2,
-        src: "images/quintet.jpg",
-        srcMini: "images/quintet_mini.jpg",
         imageStyles: {
-            transform: "scale(0.9)",
-            transformOrigin: "12% 35%"
+            transform: "scale(1.0)",
+            transformOrigin: "30% 60%"
+        }
+    },
+    {
+        primary: "Ladybug",
+        secondary: "Digital",
+        src: "images/ladybug.jpg",
+        srcMini: "images/ladybug.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.3)",
+            transformOrigin: "40% 40%"
+        }
+    },
+    {
+        primary: "Reading",
+        secondary: "Digital",
+        src: "images/turtle_books.jpg",
+        srcMini: "images/turtle_books.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "50% 50%"
         }
     },
 ];
