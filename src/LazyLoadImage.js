@@ -8,14 +8,14 @@ class LazyLoadImage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadingIconHidden: false
+      loadingIconHidden: false,
     };
     this.onLoadedImage = this.onLoadedImage.bind(this);
   }
 
   onLoadedImage() {
     this.setState({
-      loadingIconHidden: true
+      loadingIconHidden: true,
     });
   }
 
@@ -24,32 +24,37 @@ class LazyLoadImage extends Component {
     const { loadingIconHidden } = this.state;
     return (
       <LazyLoad offsetVertical={1500} debouce={false}>
-        <div
-          className={ClassNames("lds-default", {
-            "lds-default-hidden": loadingIconHidden
-          })}
-          styles={loadingIconHidden ? { display: "none !important" } : {}}
-        >
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div className={"lds-container"}>
+          <div
+            className={ClassNames("lds-default", {
+              "lds-default-hidden": loadingIconHidden,
+            })}
+            styles={loadingIconHidden ? { display: "none !important" } : {}}
+          >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <img
+            alt={src}
+            src={src}
+            className={imageClassName}
+            style={{
+              display: loadingIconHidden ? "block" : "none",
+              ...imageStyles,
+            }}
+            onLoad={this.onLoadedImage}
+          />
         </div>
-        <img
-          alt={src}
-          src={src}
-          className={imageClassName}
-          style={imageStyles}
-          onLoad={this.onLoadedImage}
-        />
       </LazyLoad>
     );
   }

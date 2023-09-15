@@ -23,10 +23,9 @@
 
 .card {
     overflow: hidden;
-    display: flex;
     align-items: center;
     justify-content: center;
-    /*border: 1px solid;*/
+    border: 1px solid;
     grid-column-end: span 2;
     grid-row-end: span 2;
 }

@@ -1,60 +1,63 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Icon from "react-fa";
-import ReactResizeDetector from "react-resize-detector";
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import Icon from 'react-fa';
+import ReactResizeDetector from 'react-resize-detector';
 
-import LazyLoadImage from "./LazyLoadImage";
-import DesignElements from "./DesignData";
-import IllustrationElements from "./IllustrationData.js";
-import SketchElements from "./SketchData";
-import Constants from "./Constants.js";
-import styles from "./Profile.module.css";
+import LazyLoadImage from './LazyLoadImage';
+import DesignElements from './DesignData';
+import IllustrationElements from './IllustrationData.js';
+import SketchElements from './SketchData';
+import Constants from './Constants.js';
+import styles from './Profile.module.css';
 
 class Profile extends Component {
-    constructor(props) {
-        super(props);
-        const source =
-            props.match.path !== "/" ? props.match.path : "/illustration";
-        var elements =
-            source === "/illustration" ? IllustrationElements : DesignElements;
-        elements = source === "/sketchbook" ? SketchElements : elements;
+  constructor(props) {
+    super(props);
+    const source =
+            props.match.path !== '/' ? props.match.path : '/illustration';
+    let elements =
+            source === '/illustration' ? IllustrationElements : DesignElements;
+    elements = source === '/sketchbook' ? SketchElements : elements;
 
-        this.state = {
-            source,
-            elements,
-            isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
-        };
-        this.onResize = this.onResize.bind(this);
-        this.scrollToTop = this.scrollToTop.bind(this);
-        this.profileElement = React.createRef();
-    }
+    this.state = {
+      source,
+      elements,
+      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth,
+    };
+    this.onResize = this.onResize.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
+    this.profileElement = React.createRef();
+  }
 
-    getGridHeight() {
-        return Math.floor(
-            (this.profileElement.current.offsetWidth - Constants.columnSpacing * 2) /
+  getGridHeight(columnSpacing) {
+    return Math.floor(
+        (this.profileElement.current.offsetWidth - columnSpacing * 2) /
             Constants.numColumns
-        );
-    }
+    );
+  }
 
-    onResize() {
-        this.setState({
-            gridHeight: this.getGridHeight(),
-            isMobile: window.innerWidth <= Constants.mobileViewMaxWidth
-        });
-    }
+  onResize() {
+    const isMobile = window.innerWidth <= Constants.mobileViewMaxWidth;
+    const columnSpacing = isMobile ? Constants.columnSpacingMobile : Constants.columnSpacing;
+    this.setState({
+      gridHeight: this.getGridHeight(columnSpacing),
+      columnSpacing,
+      isMobile: window.innerWidth <= Constants.mobileViewMaxWidth,
+    });
+  }
 
-    scrollToTop() {
-        window.scrollTo(0, 0);
-    }
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 
-    render() {
-        const { isMobile } = this.state;
-        return (
-            <div
+  render() {
+    const {isMobile, columnSpacing} = this.state;
+    return (
+      <div
         ref={this.profileElement}
         className={styles.profile}
         style={{
-          flexDirection: isMobile ? "column" : "row"
+          flexDirection: isMobile ? 'column' : 'row',
         }}
       >
         <ReactResizeDetector
@@ -67,30 +70,30 @@ class Profile extends Component {
             className={styles.gallery}
             style={{
               gridAutoRows: this.state.gridHeight,
-              gridGap: Constants.columnSpacing,
+              gridGap: columnSpacing,
               paddingLeft: isMobile ? 50 : 0,
-              paddingRight: isMobile ? 50 : 100
+              paddingRight: isMobile ? 50 : 100,
             }}
           >
             {this.state.elements.map(
-              ({ height, srcMini, width, imageStyles }, i) => {
-                var style = {};
-                if (height) {
-                  style.gridRowEnd = "span " + parseInt(height);
+                ({height, srcMini, width, imageStyles}, i) => {
+                  const style = {};
+                  if (height) {
+                    style.gridRowEnd = 'span ' + parseInt(height);
+                  }
+                  if (width) {
+                    style.gridColumnEnd = 'span ' + parseInt(width);
+                  }
+                  return (
+                    <div key={i} className={styles.card} style={style}>
+                      <Link
+                        to={'/carousel' + this.state.source + '/' + parseInt(i)}
+                      >
+                        <LazyLoadImage src={srcMini} />
+                      </Link>
+                    </div>
+                  );
                 }
-                if (width) {
-                  style.gridColumnEnd = "span " + parseInt(width);
-                }
-                return (
-                  <div key={i} className={styles.card} style={style}>
-                    <Link
-                      to={"/carousel" + this.state.source + "/" + parseInt(i)}
-                    >
-                      <LazyLoadImage src={srcMini} imageStyles={imageStyles} />
-                    </Link>
-                  </div>
-                );
-              }
             )}
           </div>
           <div className={styles.footer} onClick={this.scrollToTop}>
@@ -99,8 +102,8 @@ class Profile extends Component {
           </div>
         </div>
       </div>
-        );
-    }
+    );
+  }
 }
 
 export default Profile;

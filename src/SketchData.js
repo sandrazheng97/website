@@ -1,8 +1,8 @@
 const elements = [{
         primary: "Moving",
         secondary: "Digital",
-        src: "images/fish_swimming_banner.JPG",
-        srcMini: "images/fish_swimming_banner.JPG",
+        src: "images/fish_swimming_banner.jpg",
+        srcMini: "images/fish_swimming_banner.jpg",
         width: 6,
         height: 2,
         imageStyles: {
@@ -13,8 +13,8 @@ const elements = [{
     {
         primary: "Shoes",
         secondary: "Digital",
-        src: "images/grid_shoes.JPG",
-        srcMini: "images/grid_shoes.JPG",
+        src: "images/grid_shoes.jpg",
+        srcMini: "images/grid_shoes.jpg",
         width: 3,
         height: 3,
         imageStyles: {
@@ -25,8 +25,8 @@ const elements = [{
     {
         primary: "Zebra Family",
         secondary: "Digital",
-        src: "images/zebra_family.JPG",
-        srcMini: "images/zebra_family.JPG",
+        src: "images/zebra_family.jpg",
+        srcMini: "images/zebra_family.jpg",
         width: 3,
         height: 3,
         imageStyles: {
@@ -49,8 +49,8 @@ const elements = [{
     {
         primary: "Alone",
         secondary: "Digital",
-        src: "images/bird_feeder.JPG",
-        srcMini: "images/bird_feeder.JPG",
+        src: "images/bird_feeder.jpg",
+        srcMini: "images/bird_feeder.jpg",
         width: 2,
         height: 2,
         imageStyles: {

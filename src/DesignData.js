@@ -157,8 +157,8 @@ const elements = [{
     {
         primary: "I PUG YOU",
         secondary: "Soft Enamel Pin",
-        src: "images/pin_on_model.JPG",
-        srcMini: "images/pin_on_model.JPG",
+        src: "images/pin_on_model.jpg",
+        srcMini: "images/pin_on_model.jpg",
         width: 2,
         height: 2,
         imageStyles: {

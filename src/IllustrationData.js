@@ -5,10 +5,6 @@ const elements = [{
         srcMini: "images/nature_banner.jpg",
         width: 6,
         height: 2,
-        imageStyles: {
-            transform: "scale(1.5)",
-            transformOrigin: "50% 50%"
-        }
     },
     {
         primary: "Wander",
@@ -143,8 +139,8 @@ const elements = [{
     {
         primary: "Skateboard",
         secondary: "Digital",
-        src: "images/skateboard_duck.JPG",
-        srcMini: "images/skateboard_duck.JPG",
+        src: "images/skateboard_duck.jpg",
+        srcMini: "images/skateboard_duck.jpg",
         width: 3,
         height: 3,
         imageStyles: {

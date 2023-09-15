@@ -16,8 +16,10 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "plugin:react/recommended"
     ],
     "rules": {
+        "require-jsdoc" : 0
     }
 };
