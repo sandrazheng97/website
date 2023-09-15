@@ -13,13 +13,13 @@ const elements = [{
     {
         primary: "Sleeping Dogs",
         secondary: "Tote Bag Design",
-        src: "images/dog_tote.jpg",
-        srcMini: "images/dog_tote_mini.jpg",
+        src: "images/new_sleeping_dog.jpg",
+        srcMini: "images/new_sleeping_dog.jpg",
         width: 2,
         height: 3,
         imageStyles: {
-            transform: "scale(1.5)",
-            transformOrigin: "40% 35%"
+            transform: "scale(1.6)",
+            transformOrigin: "50% 50%"
         }
     },
     {
@@ -66,7 +66,7 @@ const elements = [{
         width: 6,
         height: 3,
         imageStyles: {
-            transform: "scale(1.3)",
+            transform: "scale(1.4)",
             transformOrigin: "60% 40%"
         }
     },
@@ -127,7 +127,7 @@ const elements = [{
         height: 3,
         imageStyles: {
             transform: "scale(1.3)",
-            transformOrigin: "40% 60%"
+            transformOrigin: "40% 10%"
         }
     },
     {

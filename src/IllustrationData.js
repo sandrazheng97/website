@@ -81,25 +81,13 @@ const elements = [{
     {
         primary: "Just Keep Swimming",
         secondary: "Watercolor",
-        src: "images/orange_green_fish.jpg",
-        srcMini: "images/orange_green_fish.jpg",
+        src: "images/norange_green_fish.jpg",
+        srcMini: "images/norange_green_fish.jpg",
         width: 2,
         height: 2,
         imageStyles: {
             transform: "scale(1.4)",
             transformOrigin: "50% 50%"
-        }
-    },
-    {
-        primary: "Turtle Family",
-        secondary: "Digital",
-        src: "images/turtle_family.jpg",
-        srcMini: "images/turtle_family.jpg",
-        width: 3,
-        height: 4,
-        imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "20% 50%"
         }
     },
     {
@@ -115,25 +103,15 @@ const elements = [{
         }
     },
     {
-        primary: "Fish Cake",
-        secondary: "Intaglio Print",
+        primary: "Turtle Family",
+        secondary: "Digital",
+        src: "images/turtle_family.jpg",
+        srcMini: "images/turtle_family.jpg",
         width: 3,
-        src: "images/fishcake.jpg",
-        srcMini: "images/fishcake_mini.jpg",
+        height: 4,
         imageStyles: {
-            transform: "scale(1.2)",
-            transformOrigin: "30% 20%"
-        }
-    },
-    {
-        primary: "Extinct Nature",
-        secondary: "Ink & Watercolor",
-        width: 3,
-        src: "images/whale.jpg",
-        srcMini: "images/whale_mini.jpg",
-        imageStyles: {
-            transform: "scale(1.9)",
-            transformOrigin: "40% 40%"
+            transform: "scale(1.3)",
+            transformOrigin: "20% 50%"
         }
     },
     {
@@ -161,10 +139,22 @@ const elements = [{
         }
     },
     {
+        primary: "Reading",
+        secondary: "Digital",
+        src: "images/turtle_books.jpg",
+        srcMini: "images/turtle_books.jpg",
+        width: 3,
+        height: 3,
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "50% 60%"
+        }
+    },
+    {
         primary: "Deep In Thought",
         secondary: "Digital",
-        src: "images/tattoos.jpeg",
-        srcMini: "images/tattoos.jpeg",
+        src: "images/new_tattoos.jpg",
+        srcMini: "images/new_tattoos.jpg",
         width: 3,
         height: 3,
         imageStyles: {
@@ -172,64 +162,16 @@ const elements = [{
             transformOrigin: "50% 50%"
         }
     },
-    {
+     {
         primary: "Picnic",
         secondary: "Digital",
-        src: "images/sandwiches.jpg",
-        srcMini: "images/sandwiches.jpg",
+        src: "images/new_sandwiches.jpg",
+        srcMini: "images/new_sandwiches.jpg",
         width: 3,
         height: 3,
         imageStyles: {
             transform: "scale(1.3)",
             transformOrigin: "50% 40%"
-        }
-    },
-    {
-        primary: "Turtle Vines",
-        secondary: "Digital",
-        width: 3,
-        height: 4,
-        src: "images/turtle_vines.png",
-        srcMini: "images/turtle_vines.png",
-        imageStyles: {
-            transform: "scale(1.5",
-            transformOrigin: "40% 10%"
-        }
-    },
-    {
-        primary: "Egg-Plant",
-        secondary: "Digital",
-        src: "images/final_eggplant.jpg",
-        srcMini: "images/final_eggplant.jpg",
-        width: 3,
-        height: 2,
-        imageStyles: {
-            transform: "scale(1.6)",
-            transformOrigin: "60% 40%"
-        }
-    },
-    {
-        primary: "Living Through Two Shootings",
-        secondary: "Digital",
-        width: 3,
-        height: 2,
-        src: "images/twoshootings.jpg",
-        srcMini: "images/twoshootings_mini.jpg",
-        imageStyles: {
-            transform: "scale(1.6)",
-            transformOrigin: "30% 50%"
-        }
-    },
-    {
-        primary: "Sleeping Dogs",
-        secondary: "Silkscreen Print",
-        src: "images/sleeping_dog.jpg",
-        srcMini: "images/sleeping_dog.jpg",
-        width: 6,
-        height: 2,
-        imageStyles: {
-            transform: "scale(1.0)",
-            transformOrigin: "30% 60%"
         }
     },
     {
@@ -245,15 +187,51 @@ const elements = [{
         }
     },
     {
-        primary: "Reading",
+        primary: "Turtle Vines",
         secondary: "Digital",
-        src: "images/turtle_books.jpg",
-        srcMini: "images/turtle_books.jpg",
         width: 3,
-        height: 3,
+        height: 6,
+        src: "images/turtle_vines.png",
+        srcMini: "images/turtle_vines.png",
         imageStyles: {
-            transform: "scale(1.4)",
+            transform: "scale(1.9)",
             transformOrigin: "50% 50%"
+        }
+    },
+    {
+        primary: "Egg-Plant",
+        secondary: "Digital",
+        src: "images/final_eggplant.jpg",
+        srcMini: "images/final_eggplant.jpg",
+        width: 3,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.6)",
+            transformOrigin: "60% 40%"
+        }
+    },
+    {
+        primary: "Sleeping Dogs",
+        secondary: "Silkscreen Print",
+        src: "images/sleeping_dog.jpg",
+        srcMini: "images/sleeping_dog.jpg",
+        width: 3,
+        height: 2,
+        imageStyles: {
+            transform: "scale(1.3)",
+            transformOrigin: "40% 40%"
+        }
+    },
+    {
+        primary: "Fish Cake",
+        secondary: "Intaglio Print",
+        width: 3,
+        height: 2,
+        src: "images/fishcake.jpg",
+        srcMini: "images/fishcake_mini.jpg",
+        imageStyles: {
+            transform: "scale(1.5)",
+            transformOrigin: "30% 20%"
         }
     },
 ];

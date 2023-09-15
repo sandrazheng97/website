@@ -11,3 +11,13 @@ To upload change
 1. Open Terminal
 2. cd ~/Documents/website
 3. npm run deploy
+
+To turn on grid 
+1.open the srs/profile.module.css file 
+2.find under .card
+3.add  border: 1px solid;
+4.cmd save
+
+To turn off grid
+1. follow steps 1-2
+2. delete  "border: 1px solid;

@@ -18,31 +18,31 @@ const elements = [{
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1.2)",
+            transform: "scale(1.3)",
             transformOrigin: "60% 60%"
         }
     },
     {
         primary: "Zebra Family",
         secondary: "Digital",
-        src: "images/zebra_family.jpg",
-        srcMini: "images/zebra_family.jpg",
+        src: "images/zebra.jpg",
+        srcMini: "images/zebra.jpg",
         width: 3,
         height: 3,
         imageStyles: {
-            transform: "scale(1.2)",
+            transform: "scale(1.3)",
             transformOrigin: "50% 50%"
         }
     },
     {
         primary: "Sun",
         secondary: "Digital",
-        src: "images/sun_pattern.jpg",
-        srcMini: "images/sun_pattern.jpg",
+        src: "images/sun.jpg",
+        srcMini: "images/sun.jpg",
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.2)",
+            transform: "scale(1.3)",
             transformOrigin: "50% 50%"
         }
     },
@@ -85,13 +85,13 @@ const elements = [{
     {
         primary: "Blue Fish",
         secondary: "Digital",
-        src: "images/blue_fish.jpg",
-        srcMini: "images/blue_fish.jpg",
+        src: "images/blue_fishes.jpg",
+        srcMini: "images/blue_fishes.jpg",
         width: 3,
         height: 3,
         imageStyles: {
             transform: "scale(1.4)",
-            transformOrigin: "65% 65%"
+            transformOrigin: "65% 75%"
         }
     },
     {
@@ -102,8 +102,8 @@ const elements = [{
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "50% 30%"
+            transform: "scale(1.4)",
+            transformOrigin: "50% 50%"
         }
     },
     {
@@ -114,8 +114,8 @@ const elements = [{
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "50% 30%"
+            transform: "scale(1.4)",
+            transformOrigin: "50% 50%"
         }
     },
     {
@@ -126,8 +126,8 @@ const elements = [{
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "50% 25%"
+            transform: "scale(1.4)",
+            transformOrigin: "50% 40%"
         }
     },
     {
@@ -138,8 +138,8 @@ const elements = [{
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "50% 30%"
+            transform: "scale(1.4)",
+            transformOrigin: "50% 45%"
         }
     },
     {
@@ -150,8 +150,8 @@ const elements = [{
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "50% 30%"
+            transform: "scale(1.4)",
+            transformOrigin: "50% 40%"
         }
     },
     {
@@ -162,8 +162,8 @@ const elements = [{
         width: 2,
         height: 2,
         imageStyles: {
-            transform: "scale(1.3)",
-            transformOrigin: "50% 30%"
+            transform: "scale(1.4)",
+            transformOrigin: "50% 40%"
         }
     },
     {
@@ -190,6 +190,18 @@ const elements = [{
             transformOrigin: "40% 25%"
         }
     },
+     {
+        primary: "Extinct Nature",
+        secondary: "Ink & Watercolor",
+        width: 6,
+        height: 2,
+        src: "images/new_whale.jpg",
+        srcMini: "images/new_whale.jpg",
+        imageStyles: {
+            transform: "scale(1.4)",
+            transformOrigin: "40% 50%"
+        }
+    },
     {
         primary: "Gradient",
         secondary: "Watercolour & Posca Markers",
@@ -198,7 +210,7 @@ const elements = [{
         width: 3,
         height: 5,
         imageStyles: {
-            transform: "scale(1.3)",
+            transform: "scale(1.4)",
             transformOrigin: "40% 40%"
         }
     },
